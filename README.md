@@ -40,7 +40,7 @@ Journey Japan is a web application catered to those who are thinking of travelin
 ### Sprint 3: 9/13
 - Finish and test Auth on routes that will require it
 - Start adding CSS framework and custom styling
--
+
 ### Sprint 4: 9/15
 - Finish CSS styling and touch up the pages 
 - Check on feature creep to add with time left
