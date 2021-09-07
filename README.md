@@ -1,4 +1,4 @@
-# ProjectJourneyJapan
+# Project Journey Japan
 Journey Japan is a web application catered to those who are thinking of traveling to Japan, been to Japan, or just genuinely interested about what Japan has to offer. Users will have the ability to create reviews on restaurants and attractions that they have been showcasing real experiences to give insight for other users about that restaurant or attraction. 
 
 # User Story
