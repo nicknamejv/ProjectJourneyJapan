@@ -24,7 +24,7 @@ Journey Japan is a web application catered to those who are thinking of travelin
 ![User Flow](https://user-images.githubusercontent.com/85213417/132397366-877b8b96-7fe7-49a7-bc71-03ae282b1056.png)
 
 # ERD
-![ERD](https://user-images.githubusercontent.com/85213417/132394716-b71f9acc-1ac2-4638-9582-605691cf595b.png)
+![ERD](https://user-images.githubusercontent.com/85213417/132417589-e91c4493-6079-4cc6-884f-9c3fe30a9390.png)
 
 # Milestones
 ### Sprint 1: 9/10
@@ -35,10 +35,10 @@ Journey Japan is a web application catered to those who are thinking of travelin
 
 ### Sprint 2: 9/11 
 - Finish full crud for user reviews 
-- Start adding Auth for users
+- Start and finish creation of user auth
 
 ### Sprint 3: 9/13
-- Finish and test Auth on routes that will require it
+- Add and finish User Authorization access on routes
 - Start adding CSS framework and custom styling
 
 ### Sprint 4: 9/15
