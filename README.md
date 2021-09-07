@@ -26,6 +26,23 @@ Journey Japan is a web application catered to those who are thinking of travelin
 # ERD
 ![ERD](https://user-images.githubusercontent.com/85213417/132394716-b71f9acc-1ac2-4638-9582-605691cf595b.png)
 
+# Milestones
+Sprint 1: 9/10
+- Create routes
+- Create skeleton setup of page looks
+- Establish db
+- Create base seed
+Sprint 2: 9/11 
+- Finish full crud for user reviews 
+- Start adding Auth for users
+Sprint 3: 9/13
+- Finish and test Auth on routes that will require it
+- Start adding CSS framework and custom styling
+Sprint 4: 9/15
+- Finish CSS styling and touch up the pages 
+- Check on feature creep to add with time left
+- Do a full test on features and making sure each work correctly  
+
 # Technologies Used 
 
 # Scripts Used
