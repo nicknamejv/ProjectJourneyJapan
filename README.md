@@ -10,7 +10,7 @@ Journey Japan is a web application catered to those who are thinking of travelin
 - Users can login/signup for a account and upon doing so they will be able to create, edit, and delete their own reviews.
 
 # Wireframes
-![Landing Page](https://user-images.githubusercontent.com/85213417/132395586-34ac8820-f75b-4ff7-9939-3e0e01804b30.png)
+![Landing Page](https://user-images.githubusercontent.com/85213417/132397340-0a684ed9-2f86-4292-bc9d-df3eb97c9f8c.png)
 
 ![Profile Page](https://user-images.githubusercontent.com/85213417/132394600-dba3e17e-f088-4852-8c6b-9082dcf6630d.png)
 
@@ -21,11 +21,10 @@ Journey Japan is a web application catered to those who are thinking of travelin
 ![Do's   Don'ts Page](https://user-images.githubusercontent.com/85213417/132394649-82a9fd59-04ee-4efd-a7a8-c93888128a6f.png)
 
 # User Flow
-![User Flow](https://user-images.githubusercontent.com/85213417/132394703-55a8dd1c-ba34-4735-8c7e-ec06f238a6e1.png)
+![User Flow](https://user-images.githubusercontent.com/85213417/132397366-877b8b96-7fe7-49a7-bc71-03ae282b1056.png)
 
 # ERD
 ![ERD](https://user-images.githubusercontent.com/85213417/132394716-b71f9acc-1ac2-4638-9582-605691cf595b.png)
-
 
 # Technologies Used 
 
