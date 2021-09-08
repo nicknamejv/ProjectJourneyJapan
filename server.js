@@ -7,7 +7,7 @@ const PORT = 4000;
 
 
 // SECTION: Internal Modules
-
+const controllers = require('./controllers');
 
 
 // SECTION: App Config
@@ -21,6 +21,7 @@ app.use(methodOverride('_method'));
 
 
 // SECTION: Controller Files
+app.use('/journeyjapan', controllers.journeyjapan);
 
 
 // SECTION: Index Page
