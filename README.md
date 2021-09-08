@@ -24,7 +24,7 @@ Journey Japan is a web application catered to those who are thinking of travelin
 ![User Flow](https://user-images.githubusercontent.com/85213417/132397366-877b8b96-7fe7-49a7-bc71-03ae282b1056.png)
 
 # ERD
-![ERD](https://user-images.githubusercontent.com/85213417/132441169-91cd07a8-83a1-4164-bfc5-34e77ba57dae.png)
+![ERD](https://user-images.githubusercontent.com/85213417/132441661-c640f5d1-c183-4e49-bce7-0d1e27127864.png)
 
 # Milestones
 ### Sprint 1: 9/10
