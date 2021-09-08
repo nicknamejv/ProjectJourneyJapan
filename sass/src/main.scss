@@ -1,0 +1,31 @@
+@use "../_variables/" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // border: 1px solid red;
+}
+
+// === COLORS === 
+// $primary-color: #e63946; // Imperial Red
+// $alt-color: #F1FAEE; // Honeydew
+// $secondary-color: #A8DADC; // Power Blue
+// $third-color: #457B9D; // Celadon Blue
+// $fourth-color: #1D3557; // Prussian Blue
+
+
+body {
+    font-family: 'Cutive Mono', monospace, sans-serif;
+    nav {
+        font-size: 20px;
+    }
+
+    .navbar {
+        background-color: $primary-color;
+    }
+
+    .navbar-nav a:hover {
+        color: $alt-color !important;
+    }
+}

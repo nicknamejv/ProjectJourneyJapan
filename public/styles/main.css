@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Cutive Mono", monospace, sans-serif;
+}
+body nav {
+  font-size: 20px;
+}
+body .navbar {
+  background-color: #e63946;
+}
+body .navbar-nav a:hover {
+  color: #F1FAEE !important;
+}
 
 /*# sourceMappingURL=main.css.map */
