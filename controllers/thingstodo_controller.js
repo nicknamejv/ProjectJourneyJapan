@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// NOTE: INDEX Route
-router.get('/', async (req, res, next) => {
+// NOTE: Show Route 
+router.get('/:id', async (req, res, next) => {
     try {
-        return res.render('journeyjapan/index');
+        return res.render('thingstodo/index');
 
     } catch (error) {
         console.log(error);

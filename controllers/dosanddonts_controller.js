@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// NOTE: INDEX Route
+// NOTE: Show Route
 router.get('/', async (req, res, next) => {
     try {
-        return res.render('journeyjapan/index');
+        return res.render('dosanddonts/index');
 
     } catch (error) {
         console.log(error);
