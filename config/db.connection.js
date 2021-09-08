@@ -2,12 +2,7 @@ const mongoose = require('mongoose');
 
 const connectionStr = 'mongodb://localhost:27017/journeyjapan';
 
-mongoose.connect(connectionStr, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-});
+mongoose.connect(connectionStr);
 
 mongoose.connection.on('connected', () => {
     console.log('MongoDB connected 🤘🤘🤘 !');

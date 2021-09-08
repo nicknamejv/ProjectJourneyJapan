@@ -13,9 +13,21 @@ body nav {
 }
 body .navbar {
   background-color: #e63946;
+  height: 70px;
 }
 body .navbar-nav a:hover {
   color: #F1FAEE !important;
+}
+body #journeyjapan-title {
+  font-size: 45px;
+}
+body .carousel img {
+  height: 80vh;
+}
+body .carousel-caption {
+  background-color: black;
+  opacity: 70%;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head Partial -->
-<%- include('../partials/head/head.ejs', { page: 'Home' }) %>
+    <!-- Head Partial -->
+    <%- include('../partials/head/head.ejs', { page: 'Home' }) %>
 
 <body>
     <!-- Navbar Partial -->
-    <%- include ('../partials/navbar/navbar.ejs') %> 
-
+    <%- include ('../partials/navbar/navbar.ejs') %>
+    <main>
+        <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1593839154339-377e24b3ba32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1558&q=80" class="d-block w-100" alt="tokyo" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Tokyo, Japan</h3>
+                        <p>Greeted by the beautiful Mt. Fuji and the Tokyo Tower glowing in the distant.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="kyoto" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Kyoto, Japan</h3>
+                        <p>Wake up early and beat the crowd to the Hokanji Temple to enjoy the sunrise at the most photographed alley in all of Japan.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://img5.goodfon.com/wallpaper/nbig/1/16/japon-castillo-de-osaka-osaka-iaponiia-zamok.jpg" class="d-block w-100" alt="osaka" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Osaka, Japan</h3>
+                        <p>There are castles around the world and then there is Osaka Castle.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+    <section>
+        <div class="container my-3">
+            <div class="card">
+                <div class="card-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, tenetur? Sit, dicta impedit blanditiis officiis animi, dolore suscipit aut voluptate sapiente maiores aliquid ducimus rerum, error delectus soluta laudantium. Excepturi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit neque quos nostrum, quis reiciendis corrupti eius, adipisci provident omnis reprehenderit est quas odio laboriosam expedita ipsum obcaecati maiores perspiciatis incidunt?
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
