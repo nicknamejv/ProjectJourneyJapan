@@ -25,8 +25,7 @@ app.use(methodOverride('_method'));
 
 // SECTION: Index Page
 app.get('/', (req, res) => {
-    res.send('Hello World!');
-    // res.redirect('/journeyjapan');
+    res.redirect('/journeyjapan');
 });
 
 app.listen(PORT, () => {
