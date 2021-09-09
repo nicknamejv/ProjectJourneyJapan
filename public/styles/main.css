@@ -17,6 +17,9 @@ body .navbar {
   background-image: url("/assets/sakura.png");
   height: 70px;
 }
+body #navbar-bar {
+  border-bottom: 5px solid #e63946;
+}
 body .navbar-nav a {
   color: #e63946 !important;
   font-weight: bolder;

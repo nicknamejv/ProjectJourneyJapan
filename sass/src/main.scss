@@ -30,6 +30,10 @@ body {
         background-image: url('/assets/sakura.png');
         height: 70px;
     }
+    
+    #navbar-bar {
+        border-bottom: 5px solid $primary-color;
+    }
 
     .navbar-nav a {
         color: $primary-color !important;
