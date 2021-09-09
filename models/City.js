@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const citySchema = new mongoose.Schema(
     {
-        description: {
+        city: {
             type: String,
             required: true,
         },
-
-        city: {
+        
+        description: {
             type: String,
             required: true,
         },

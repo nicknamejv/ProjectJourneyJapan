@@ -7,19 +7,29 @@
 
 body {
   font-family: "Cutive Mono", monospace, sans-serif;
+  background-image: url("/assets/sakura.png");
 }
 body nav {
   font-size: 20px;
+  z-index: 999999;
 }
 body .navbar {
-  background-color: #e63946;
+  background-image: url("/assets/sakura.png");
   height: 70px;
 }
+body .navbar-nav a {
+  color: #e63946 !important;
+  font-weight: bolder;
+}
 body .navbar-nav a:hover {
-  color: #F1FAEE !important;
+  color: #A8DADC !important;
 }
 body #journeyjapan-title {
   font-size: 45px;
+  color: #e63946;
+}
+body #journeyjapan-title:hover {
+  color: #A8DADC !important;
 }
 body .carousel img {
   height: 80vh;
@@ -28,6 +38,28 @@ body .carousel-caption {
   background-color: black;
   opacity: 70%;
   padding: 10px;
+}
+body #error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+body #error-card {
+  height: 800px;
+  width: 800px;
+}
+body .centered {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 70px;
+  font-weight: bolder;
+  color: white;
+  background-color: black;
+  opacity: 75%;
 }
 
 /*# sourceMappingURL=main.css.map */
