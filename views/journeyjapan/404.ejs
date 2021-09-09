@@ -6,11 +6,20 @@
 <body>
     <!-- Navbar Partial -->
     <%- include ('../partials/navbar/navbar.ejs') %>
-    <h1>404 Page</h1>
-    <% if (error) { %>
-        <p>
-            <%= error.message %>
-        </p>
-    <% } %>
+    <div class="container" id="error-container">
+        <div class="centered">
+            404 Page Baka!
+        </div>
+
+        <div class="card" id="error-card">
+            <img src="https://i.gifer.com/GaJ3.gif" class="card-img-top" alt="404">
+        </div>
+        
+        <% if (error) { %>
+            <p>
+                <%= error.message %>
+            </p>
+        <% } %>
+    </div>
 </body>
 </html>

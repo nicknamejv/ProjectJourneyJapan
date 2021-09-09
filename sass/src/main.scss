@@ -17,23 +17,39 @@
 
 body {
     font-family: 'Cutive Mono', monospace, sans-serif;
+    background-image: url('/assets/sakura.png');
+    // background-color: $alt-color;
+
+    // NOTE: == NAV == 
     nav {
         font-size: 20px;
+        z-index: 999999;
     }
 
     .navbar {
-        background-color: $primary-color;
+        background-image: url('/assets/sakura.png');
         height: 70px;
     }
 
+    .navbar-nav a {
+        color: $primary-color !important;
+        font-weight: bolder;
+    }
+
     .navbar-nav a:hover {
-        color: $alt-color !important;
+        color: $secondary-color !important;
     }
 
     #journeyjapan-title {
         font-size: 45px;
+        color: $primary-color;
     }
 
+    #journeyjapan-title:hover {
+        color: $secondary-color !important;
+    }
+
+    // NOTE: == Landing Page ==
     .carousel img {
         height: 80vh;
     }
@@ -42,5 +58,31 @@ body {
         background-color: black;
         opacity: 70%;
         padding: 10px;
+    }
+
+    // NOTE: == 404 Page == 
+    #error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px;
+    }
+    
+    #error-card {
+        height: 800px;
+        width: 800px;
+    }
+
+    .centered {
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 70px;
+        font-weight: bolder;
+        color: white;
+        background-color: black;
+        opacity: 75%;
     }
 }
