@@ -22,9 +22,9 @@
                         City
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/city/1">Tokyo</a></li>
-                        <li><a class="dropdown-item" href="#=">Kyoto</a></li>
-                        <li><a class="dropdown-item" href="#">Osaka</a></li>
+                        <% cities.forEach(allCities => { %>
+                            <li><a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a></li>
+                        <% }) %>
                     </ul>
                 </li>
                 <li class="nav-item">

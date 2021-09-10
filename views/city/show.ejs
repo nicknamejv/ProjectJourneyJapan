@@ -1,0 +1,64 @@
+<html lang="en">
+    <!-- Head Partial -->
+    <%- include('../partials/head/head.ejs', { page: city.city }) %>
+
+<body>
+    <!-- Navbar Partial -->
+    <%- include ('../partials/navbar/navbar.ejs') %>
+    <main id="city-main">
+        <div class="container d-flex justify-content-center my-2">
+            <h1 id="city-title">
+                <%= city.city %>
+            </h1>
+        </div>
+        <div class="container-fluid my-2 p-2" id="city-show">
+            <img 
+            src="<%= city.image %>"
+            alt="<%= city.city %>"
+            class="img-thumbnail border-5 border-dark"
+            id="city-image">
+            <div class="card p-3" id="city-card">
+                <p id="city-description">
+                    " <%= city.description %> "
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div class="container d-flex justify-content-center my-2 p-2" id="city-todos">
+        <section class="container" id="todo">
+            <h1>FOOD</h1>
+            <% thingstodofood.forEach(foundThingsToDoFood => { %>
+                <a href="/thingstodo/<%= foundThingsToDoFood._id %>" id="todo-link">
+                    <div class="card p-5 m-3" id="todo-card">
+                        <img src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
+                        <p>
+                            <%= foundThingsToDoFood.title %>
+                        </p>
+                        <p>
+                            <%= foundThingsToDoFood.description %>
+                        </p>
+                    </div>
+                </a>
+            <% }) %>
+        </section>
+        
+        <section class="container" id="todo">
+            <h1>ATTRACTION</h1>
+            <% thingstodoattraction.forEach(foundThingsToDoAttraction => { %>
+                <div class="card p-5 m-3" id="todo-card">
+                    <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
+                        <img src="<%= foundThingsToDoAttraction.image %>" alt="image" id="todo-image-show">
+                        <p>
+                            <%= foundThingsToDoAttraction.title %>
+                        </p>
+                        <p>
+                            <%= foundThingsToDoAttraction.description %>
+                        </p>
+                    </a>
+                </div>
+            <% }) %>
+        </section>
+    </div>
+</body>
+</html>
