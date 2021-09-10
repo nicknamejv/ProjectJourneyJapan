@@ -5,4 +5,5 @@ module.exports = {
     profile: require('./profile_controller'),
     reviews: require('./review_controller'),
     thingstodo: require('./thingstodo_controller'),
+    auth: require('./auth_controller'),
 };

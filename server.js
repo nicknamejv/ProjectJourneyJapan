@@ -4,6 +4,9 @@ const app = express();
 const methodOverride = require('method-override');
 const PORT = 4000;
 
+// SECTION: AUTH
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 // SECTION: Internal Modules
 const controllers = require('./controllers');
@@ -12,6 +15,21 @@ const controllers = require('./controllers');
 // SECTION: App Config
 app.set('view engine', 'ejs');
 
+app.use(
+    session({
+        store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/journeyjapan' }),
+
+        // secret key
+        secret: "I have a secret and the secret is the secret.",
+        resave: false,
+        saveUninitialized: false,
+
+        // configure the expiration of the cookie 
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // two weeks
+        },
+    }),
+);
 
 // SECTION: Middleware
 app.use(express.static('public'));
@@ -26,6 +44,7 @@ app.use('/dosanddonts', controllers.donsanddonts);
 app.use('/profile', controllers.profile);
 app.use('/reviews', controllers.reviews);
 app.use('/thingstodo', controllers.thingstodo);
+app.use('/', controllers.auth);
 
 
 // SECTION: Index Page

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head Partial -->
+<%- include('../partials/head/head.ejs', { page: "Login" }) %>
+
+    <body>
+        <!-- Navbar Partial -->
+        <%- include ('../partials/navbar/navbar.ejs') %>
+
+            <h1>Login Page</h1>
+            <div class="container justify-content-center">
+                <form class="needs-validation" novalidate>
+                    <div class="col-md-4">
+                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" placeholder="ExampleUser" required autofocus>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                            <div class="valid-feedback">
+                                Username is valid!
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <div class="col-md-4">
+                        <label for="validationPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="validationPassword" placeholder="Please enter password." required>
+                        <div class="invalid-feedback">
+                            Please make sure your password is between 8-20 characters long.
+                        </div>
+                        <div class="valid-feedback">
+                            Password is valid!
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+    </body>
+
+</html>
