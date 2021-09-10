@@ -25,19 +25,23 @@
         </div>
     </main>
 
-    <div class="container d-flex justify-content-center my-2 p-2" id="city-todos">
-        <section class="container" id="todo">
+    <div class="container d-flex justify-content-center my-5 p-2" id="city-todos">
+        <section class="container-fluid" id="todo">
             <h1>FOOD</h1>
             <% thingstodofood.forEach(foundThingsToDoFood => { %>
                 <a href="/thingstodo/<%= foundThingsToDoFood._id %>" id="todo-link">
-                    <div class="card p-5 m-3" id="todo-card">
-                        <img src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
-                        <p>
-                            <%= foundThingsToDoFood.title %>
-                        </p>
-                        <p>
-                            <%= foundThingsToDoFood.description %>
-                        </p>
+                    <div class="card p-3 m-3" id="todo-card">
+                        <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <strong>
+                                    <%= foundThingsToDoFood.title %>
+                                </strong>
+                            </h3>
+                            <p class="card-text">
+                                " <%= foundThingsToDoFood.description %> "
+                            </p>
+                        </div>
                     </div>
                 </a>
             <% }) %>
@@ -46,17 +50,21 @@
         <section class="container" id="todo">
             <h1>ATTRACTION</h1>
             <% thingstodoattraction.forEach(foundThingsToDoAttraction => { %>
-                <div class="card p-5 m-3" id="todo-card">
-                    <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
-                        <img src="<%= foundThingsToDoAttraction.image %>" alt="image" id="todo-image-show">
-                        <p>
-                            <%= foundThingsToDoAttraction.title %>
-                        </p>
-                        <p>
-                            <%= foundThingsToDoAttraction.description %>
-                        </p>
-                    </a>
-                </div>
+                <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
+                    <div class="card p-3 m-3" id="todo-card">
+                        <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoAttraction.image %>" alt="image" id="todo-image-show">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <strong>
+                                    <%= foundThingsToDoAttraction.title %>
+                                </strong>
+                            </h3>
+                            <p class="card-text">
+                                " <%= foundThingsToDoAttraction.description %> "
+                            </p>
+                        </div>
+                    </div>
+                </a>
             <% }) %>
         </section>
     </div>

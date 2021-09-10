@@ -1,5 +1,4 @@
 // SECTION: External Modules 
-const { response } = require('express');
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
@@ -35,13 +34,25 @@ app.get('/', (req, res) => {
 });
 
 // NOTE: 404 Page
-app.get("/*", (req, res) => {
-    const context = {
-    error: req.error,
-};
+const { City } = require('./models');
 
-res.render("journeyjapan/404", context);
+app.get("/*", async (req, res, next) => {
+    try {
+        const allCities = await City.find({});
+        
+        const context = {
+            cities: allCities,
+            error: req.error,
+        };
+        
+        res.render("journeyjapan/404", context);
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    };
 });
+
 
 app.listen(PORT, () => {
     console.log(`I live on port ${PORT}`);
