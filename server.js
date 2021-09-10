@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
 const PORT = 4000;
+require('dotenv').config();
 
 // SECTION: AUTH
 const session = require("express-session");
@@ -17,10 +18,10 @@ app.set('view engine', 'ejs');
 
 app.use(
     session({
-        store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/journeyjapan' }),
+        store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
 
         // secret key
-        secret: "I have a secret and the secret is the secret.",
+        secret: process.env.SECRET,
         resave: false,
         saveUninitialized: false,
 
@@ -35,6 +36,13 @@ app.use(
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(require('./utils/navlinks'));
+
+// NOTE Current User
+app.use(function (req, res, next) {
+    res.locals.user = req.session.currentUser;
+    next();
+});
 
 
 // SECTION: Controller Files

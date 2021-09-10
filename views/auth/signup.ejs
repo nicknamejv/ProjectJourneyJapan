@@ -9,12 +9,15 @@
 
             <h1>Sign Up Page</h1>
             <div class="container justify-content-center">
-                <form class="needs-validation" novalidate>
+                <form action="/signup" method="POST"
+                class="needs-validation" novalidate>
                     <div class="col-md-4">
                         <label for="validationCustomUsername" class="form-label">Username</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            <input type="text" class="form-control" id="validationCustomUsername"
+                            <input type="text" class="form-control" 
+                            name="username"
+                            id="validationCustomUsername"
                                 aria-describedby="inputGroupPrepend" placeholder="ExampleUser" required autofocus>
                             <div class="invalid-feedback">
                                 Please choose a username.
@@ -29,7 +32,8 @@
 
                     <div class="col-md-4">
                         <label for="validationEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="validationEmail" placeholder="Please provide a valid email." required>
+                        <input type="email" name="email"
+                        class="form-control" id="validationEmail" placeholder="Please provide a valid email." required>
                         <div class="invalid-feedback">
                             Please provide a valid email.
                         </div>
@@ -42,7 +46,8 @@
 
                     <div class="col-md-4">
                         <label for="validationPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="validationPassword" placeholder="Please enter a valid password." required>
+                        <input type="password" name="password"
+                        class="form-control" id="validationPassword" placeholder="Please enter a valid password." required>
                         <div class="invalid-feedback">
                             Please make sure your password is between 8-20 characters long.
                         </div>
@@ -55,7 +60,8 @@
 
                     <div class="col-md-4">
                         <label for="validationProfilePicture" class="form-label">Profile Picture</label>
-                        <input type="text" class="form-control" id="validationProfilePicture" placeholder="https://" required>
+                        <input type="text" name="avatar"
+                        class="form-control" id="validationProfilePicture" placeholder="https://" required>
                         <div class="invalid-feedback">
                             Please provide a profile picture.
                         </div>
@@ -68,7 +74,8 @@
 
                     <div class="col-md-4">
                         <label for="validationBio" class="form-label">Bio</label>
-                        <input type="text" class="form-control" id="validationBio" placeholder="Describe yourself!" required>
+                        <input type="text" name="bio"
+                        class="form-control" id="validationBio" placeholder="Describe yourself!" required>
                         <div class="invalid-feedback">
                             Please provide a user bio. 
                         </div>
