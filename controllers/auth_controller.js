@@ -62,7 +62,7 @@ router.post('/signup', async (req, res) => {
         // create user in DB
         const newUser = await User.create(req.body);
 
-        return res.redirect('/login');
+        return res.redirect('/journeyjapan');
 
     } catch (error) {
         console.log(error);
@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
     try {
         // check if user exists 
         const foundUser = await User.findOne({
-            email: req.body.email
+            username: req.body.username
         });
 
         // if not redirect to register page

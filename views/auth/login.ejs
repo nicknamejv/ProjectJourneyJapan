@@ -9,15 +9,17 @@
 
             <h1>Login Page</h1>
             <div class="container justify-content-center">
-                <form class="needs-validation" novalidate>
+                <form action="/login" method="POST"
+                class="needs-validation" novalidate>
                     <div class="col-md-4">
                         <label for="validationCustomUsername" class="form-label">Username</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            <input type="text" class="form-control" id="validationCustomUsername"
+                            <input type="text" name="username"
+                            class="form-control" id="validationCustomUsername"
                                 aria-describedby="inputGroupPrepend" placeholder="ExampleUser" required autofocus>
                             <div class="invalid-feedback">
-                                Please choose a username.
+                                Username is not correct!
                             </div>
                             <div class="valid-feedback">
                                 Username is valid!
@@ -29,9 +31,10 @@
 
                     <div class="col-md-4">
                         <label for="validationPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="validationPassword" placeholder="Please enter password." required>
+                        <input type="password" name="password"
+                        class="form-control" id="validationPassword" placeholder="Please enter password." required>
                         <div class="invalid-feedback">
-                            Please make sure your password is between 8-20 characters long.
+                            Password is not correct!
                         </div>
                         <div class="valid-feedback">
                             Password is valid!
