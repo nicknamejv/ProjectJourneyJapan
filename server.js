@@ -36,7 +36,16 @@ app.use(
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use(require('./utils/navlinks'));
+
+// NOTE: Auth Middleware
+const authRequired = function (req, res, next) {
+    if (req.session.currentUser) {
+        return next();
+    };
+
+    return res.redirect('/login');
+};
+
 
 // NOTE Current User
 app.use(function (req, res, next) {
@@ -49,7 +58,7 @@ app.use(function (req, res, next) {
 app.use('/journeyjapan', controllers.journeyjapan);
 app.use('/city', controllers.city);
 app.use('/dosanddonts', controllers.donsanddonts);
-app.use('/profile', controllers.profile);
+app.use('/profile', authRequired, controllers.profile);
 app.use('/reviews', controllers.reviews);
 app.use('/thingstodo', controllers.thingstodo);
 app.use('/', controllers.auth);
