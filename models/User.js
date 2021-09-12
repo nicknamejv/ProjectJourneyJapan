@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema(
         avatar: {
             type: String,
             required: [true, "Please Provide A Profile Picture!"],
-            default: "https://www.vippng.com/png/full/416-4161690_empty-profile-picture-blank-avatar-image-circle.png",
         },
 
         bio: {

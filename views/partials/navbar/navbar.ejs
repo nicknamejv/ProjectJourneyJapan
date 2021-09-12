@@ -16,6 +16,8 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end"  id="navbarNavDropdown">
             <ul class="navbar-nav">
+            <!-- If user IS logged in -->
+            <% if (typeof user !== 'undefined' ) { %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,7 +25,36 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <% cities.forEach(allCities => { %>
-                            <li><a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a></li>
+                            <li>
+                                <a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
+                </li>
+                <p>
+                    <a class="nav-link" href="/profile">
+                        @<%= user.username %>
+                    </a>
+                </p>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+
+            <!-- If user is NOT logged in -->
+            <% } else if (typeof user === 'undefined' ) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        City
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <% cities.forEach(allCities => { %>
+                            <li>
+                                <a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a>
+                            </li>
                         <% }) %>
                     </ul>
                 </li>
@@ -31,14 +62,12 @@
                     <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/login">Log In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/signup">Sign Up</a>
                 </li>
+            <% } %>
             </ul>
             <!-- PLACE HOLDER -->
         </div>

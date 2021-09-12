@@ -13,13 +13,14 @@
 
         <div class="card" id="error-card">
             <img src="https://i.gifer.com/GaJ3.gif" class="card-img-top" alt="404">
+            <div class="card-body" id="error-body">
+                <% if (error) { %>
+                    <p>
+                        <%= error.message %>
+                    </p>
+                    <% } %>
+            </div>
         </div>
-        
-        <% if (error) { %>
-            <p>
-                <%= error.message %>
-            </p>
-        <% } %>
     </div>
 </body>
 </html>
