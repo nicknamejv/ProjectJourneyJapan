@@ -27,13 +27,20 @@
 
     <div class="container d-flex justify-content-center my-5 p-2" id="city-todos">
         <section class="container-fluid" id="todo">
-            <h1>FOOD</h1>
+            <div id="todo-food">
+                <h1 class="display-4" id="todo-food-title">
+                    What To Eat? 
+                </h1>
+            </div>
             <% thingstodofood.forEach(foundThingsToDoFood => { %>
                 <a href="/thingstodo/<%= foundThingsToDoFood._id %>" id="todo-link">
+
+                    <br>
+
                     <div class="card p-3 m-3" id="todo-card">
                         <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
                         <div class="card-body">
-                            <h3 class="card-title">
+                            <h3 class="card-title" id="todo-title">
                                 <strong>
                                     <%= foundThingsToDoFood.title %>
                                 </strong>
@@ -48,13 +55,20 @@
         </section>
         
         <section class="container" id="todo">
-            <h1>ATTRACTION</h1>
+            <div id="todo-attraction">
+                <h1 class="display-4" id="todo-attraction-title">
+                    What To See? 
+                </h1>
+            </div>
             <% thingstodoattraction.forEach(foundThingsToDoAttraction => { %>
                 <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
+
+                    <br>
+
                     <div class="card p-3 m-3" id="todo-card">
                         <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoAttraction.image %>" alt="image" id="todo-image-show">
                         <div class="card-body">
-                            <h3 class="card-title">
+                            <h3 class="card-title" id="todo-title">
                                 <strong>
                                     <%= foundThingsToDoAttraction.title %>
                                 </strong>

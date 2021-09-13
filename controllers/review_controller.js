@@ -62,7 +62,6 @@ router.put('/:id', authRequired, async (req, res, next) => {
 
         const context = {
             review: updatedReview,
-            // thingstodo: allThingsToDo,
         };
 
         return res.redirect(`/thingstodo/${updatedReview.thingstodo}`)

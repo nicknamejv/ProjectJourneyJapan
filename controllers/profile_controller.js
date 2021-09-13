@@ -8,7 +8,7 @@ router.get('/:id', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
         const allCities = await City.find({});
-        const allUserReviews = await Review.find({ user: req.params.id }).populate('user');
+        const allUserReviews = await Review.find({ user: req.params.id }).populate('user thingstodo');
 
         const context = {
             user: foundUser,
@@ -16,19 +16,7 @@ router.get('/:id', async (req, res, next) => {
             review: allUserReviews,
         };
 
-        return res.render('profile/index', context);
-
-    } catch (error) {
-        console.log(error);
-        req.error = error;
-        return next();
-    };
-});
-
-// NOTE: Update Route (Presentational)
-router.get('/:id/edit', async (req, res, next) => {
-    try {
-        return res.render('profile/edit');
+        return res.render('profile/show', context);
 
     } catch (error) {
         console.log(error);
@@ -38,14 +26,23 @@ router.get('/:id/edit', async (req, res, next) => {
 });
 
 // NOTE: Update Route (Functional)
-// router.put('/:id', async (req, res, next) => {
-//     try {
+router.put('/:id', async (req, res, next) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id,
+            { $set: req.body },
+            { new: true });
 
-//     } catch (error) {
-//         console.log(error);
-//         req.error = error;
-//         return next();
-//     }
-// });
+        const context = {
+            user: updatedUser,
+        };
+
+        return res.redirect(`/profile/${updatedUser.id}`)
+
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    }
+});
 
 module.exports = router;
