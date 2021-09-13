@@ -7,7 +7,16 @@
     <!-- Navbar Partial -->
     <%- include ('../partials/navbar/navbar.ejs') %>
     <h1>Profile Show Page</h1>
+    <p><%= user.username %></p>
+    <img src="<%= user.avatar %>" alt="user-avatar">
+    <p><%= user.bio %> </p>
 
+    <h1>USER REVIEWS:</h1>
+    <% review.forEach(allUserReviews => { %>
+        <div class="card">
+            <%= allUserReviews.content %> 
+        </div>
+    <% }) %>
 
     <!-- Back to top button -->
     <button
