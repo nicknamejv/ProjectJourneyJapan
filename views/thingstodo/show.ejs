@@ -6,8 +6,9 @@
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
+        <div class="container">
             <h1>Things To Do Show Page</h1>
-
+            
             <img src="<%= thingstodo.image %> " alt="<%= thingstodo.title %> " />
             <p>
                 <%= thingstodo.title %>
@@ -15,6 +16,7 @@
             <p>
                 <%= thingstodo.description %>
             </p>
+        </div>
 
             <!-- REVIEW AREA  -->
             <h1>REVIEWS</h1>
@@ -110,7 +112,7 @@
                         </div>
                         <% }) %>
 
-                            <!-- Button trigger modal -->
+                            <!-- Review Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#reviewModal">
                                 Create Review!

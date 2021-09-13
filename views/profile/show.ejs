@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head Partial -->
+    <%- include('../partials/head/head.ejs', { page: 'Profile' }) %>
+
+<body>
+    <!-- Navbar Partial -->
+    <%- include ('../partials/navbar/navbar.ejs') %>
+
+    <br>
+    
+    <div class="container-fluid my-3 p-3">
+        <div class="row">
+            <div class="col" id="user-col">
+                <button type="button" data-bs-toggle="modal" id="profile-button"
+                data-bs-target="#userProfileModal">
+                    <div class="card p-3" style="width: 35rem" id="user-card">
+                        <span id="profile-edit-text">
+                            Edit Profile
+                        </span>
+                        <h5 class="user-card-title">
+                            Hello @<%= user.username %>!
+                        </h5>
+                        <img
+                        class="card-img-top img-thumbnail border-2 border-dark"
+                        src="<%= user.avatar %>" 
+                        alt="user-avatar" 
+                        width="250" 
+                        height="250">
+                        <div class="card-body">
+                            <p class="card-text" id="user-card-text">
+                                " <%= user.bio %> "
+                            </p>
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="col">
+                <div id="user-reviews-all">
+                    <h1>
+                        @<%= user.username %>'s  Post:
+                    </h1>
+                    <% review.forEach(allUserReviews => { %>
+                        <a href="/thingstodo/<%= allUserReviews.thingstodo.id %> " id="user-reviews-link">
+                            <div class="card p-3" id="user-reviews">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p id="user-reviews-title">
+                                        Things To Do: <%= allUserReviews.thingstodo.title %>
+                                    </p>
+                                    <p id="user-create-at">
+                                        <%= new Date(allUserReviews.createdAt).toLocaleString() %>
+                                    </p>
+                                </div>
+                                <p>
+                                    Rating: <%= allUserReviews.rating %>/5 
+                                </p>
+                                <p>
+                                    " <%= allUserReviews.content %> "
+                                </p>
+                            </div>
+                        </a>
+                        <br>
+                        <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile MODAL -->
+    <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="userProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="userProfile">
+                <div class="modal-header" id="userProfileModal-header">
+                    <h5 class="modal-title" id="userProfileModalLabel">Edit Profile!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="/profile/<%= user._id %>?_method=PUT"
+                            method="POST">
+                            <div class="form-floating mb-3">
+                                <input 
+                                type="text"
+                                class="form-control" 
+                                placeholder="https://"
+                                id="floatingTextarea1"
+                                name="avatar"
+                                value="<%= user.avatar %>"
+                                required
+                                autofocus/>
+                                <label for="floatingTextarea1">Profile Picture:</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea 
+                                class="form-control" 
+                                placeholder="Write a bio!" 
+                                id="floatingTextarea2"
+                                style="height: 100px"
+                                name="bio"
+                                required><%= user.bio %></textarea>
+                                <label for="floatingTextarea2">Profile Bio:</label>
+                            </div>
+
+                            <% if (typeof user !=='undefined' ) { %>
+                                <div class="modal-footer" id="profile-footer-btn">
+                                    <button type="submit"
+                                        class="btn btn-dark">Submit</button>
+                                </div>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Back to top button -->
+    <button
+    type="button"
+    class="btn btn-danger btn-floating btn-sml"
+    id="btn-back-to-top"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+        </svg>
+        TOP OF PAGE
+    </button>
+</body>
+</html>
