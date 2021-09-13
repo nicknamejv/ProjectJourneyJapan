@@ -26,6 +26,8 @@ body {
         display: none;
     }
 
+    
+
     // NOTE: == NAV == 
     nav {
         font-size: 20px;
@@ -64,8 +66,12 @@ body {
     }
 
     // NOTE: == Landing Page ==
+    #journey-japan-text {
+        border: 2px solid black;
+    }
+
     .carousel img {
-        height: 70vh;
+        height: 78vh;
     }
 
     .carousel-caption {
@@ -302,10 +308,25 @@ body {
         font-size: 18px;
     }
 
+    #todo-show-card {
+        border: 1px solid black;
+    }
+
+    #todo-user-review-link {
+        color: $third-color;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    #todo-user-review-link:hover {
+        font-size: 20px;
+        color: $primary-color;
+    }
+
     //  NOTE: == FOOTER ==
     #footer {
         gap: 15px;
-        font-size: 20px;
+        font-size: 18px;
         display: flex;
         align-items: baseline;
     }
@@ -387,8 +408,9 @@ body {
 
     #user-col {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
     }
 
     #profile-button {

@@ -44,8 +44,11 @@ body #journeyjapan-title:hover {
   color: #A8DADC !important;
   text-shadow: 2px 2px 2px #A8DADC;
 }
+body #journey-japan-text {
+  border: 2px solid black;
+}
 body .carousel img {
-  height: 70vh;
+  height: 78vh;
 }
 body .carousel-caption {
   background-color: black;
@@ -235,9 +238,21 @@ body #todo-delete-confirm:hover {
 body #deleteModalLabel h5 {
   font-size: 18px;
 }
+body #todo-show-card {
+  border: 1px solid black;
+}
+body #todo-user-review-link {
+  color: #457B9D;
+  text-decoration: none;
+  transition: 0.3s;
+}
+body #todo-user-review-link:hover {
+  font-size: 20px;
+  color: #e63946;
+}
 body #footer {
   gap: 15px;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   align-items: baseline;
 }
@@ -302,8 +317,9 @@ body #user-card img {
 }
 body #user-col {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 body #profile-button {
   border: none;
