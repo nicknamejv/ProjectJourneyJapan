@@ -52,7 +52,21 @@
                                     </p>
                                 </div>
                                 <p>
-                                    Rating: <%= allUserReviews.rating %>/5 
+                                    <% for( let i = 0; i < 5; i++ ) { %>
+                                        <% if (allUserReviews.rating > i) { %>
+                                            <span id="review-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                </svg>
+                                            </span>
+                                        <% } else { %>
+                                            <span id="review-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                                class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                </svg>
+                                            </span>
+                                        <% } %>  <% } %>
                                 </p>
                                 <p>
                                     " <%= allUserReviews.content %> "
@@ -80,27 +94,25 @@
                     <div class="container">
                         <form action="/profile/<%= user._id %>?_method=PUT"
                             method="POST">
-                            <div class="form-floating mb-3">
+                            <div class="mb-3">
+                                <label>Profile Picture:</label>
                                 <input 
                                 type="text"
                                 class="form-control" 
                                 placeholder="https://"
-                                id="floatingTextarea1"
                                 name="avatar"
                                 value="<%= user.avatar %>"
                                 required
                                 autofocus/>
-                                <label for="floatingTextarea1">Profile Picture:</label>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="mb-3">
+                                <label>Profile Bio:</label>
                                 <textarea 
                                 class="form-control" 
                                 placeholder="Write a bio!" 
-                                id="floatingTextarea2"
                                 style="height: 100px"
                                 name="bio"
                                 required><%= user.bio %></textarea>
-                                <label for="floatingTextarea2">Profile Bio:</label>
                             </div>
 
                             <% if (typeof user !=='undefined' ) { %>

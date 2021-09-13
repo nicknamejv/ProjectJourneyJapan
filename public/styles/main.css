@@ -42,6 +42,7 @@ body #journeyjapan-title {
 }
 body #journeyjapan-title:hover {
   color: #A8DADC !important;
+  text-shadow: 2px 2px 2px #A8DADC;
 }
 body .carousel img {
   height: 70vh;
@@ -107,6 +108,22 @@ body #city-description {
 body #todo-title {
   text-decoration: underline;
 }
+body #todo-user-date {
+  font-size: 18px;
+}
+body #todo-rating input {
+  width: 60px;
+  text-align: center;
+}
+body #todo-user-content {
+  font-size: 20px;
+}
+body #todo-review-card {
+  border: 1px solid black;
+}
+body #todo-review-user-img {
+  border: 1px solid black;
+}
 body #city-todos {
   gap: 250px;
 }
@@ -136,6 +153,87 @@ body #todo-card {
 }
 body #todo-card:hover {
   transform: scale(1.1);
+}
+body #review-edit-delete {
+  gap: 10px;
+}
+body #todo-add-btn-svg {
+  fill: #e63946;
+  transition: 0.3s;
+  border-radius: 0 !important;
+  background-color: transparent;
+}
+body #todo-add-btn-svg:hover {
+  fill: #A8DADC;
+  transform: scale(1.3);
+}
+body #todo-add-btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+body #todo-btn-edit {
+  border: none;
+  transition: 0.3s;
+  border: 1px solid black;
+}
+body #todo-btn-edit:hover {
+  transform: scale(1.3);
+  background-color: #A8DADC;
+}
+body #todo-btn-edit:focus {
+  outline: 0;
+  box-shadow: none;
+}
+body #todo-btn-delete {
+  border: none;
+  transition: 0.3s;
+  border: 1px solid black;
+}
+body #todo-btn-delete:hover {
+  transform: scale(1.3);
+  background-color: #e63946;
+}
+body #todo-btn-delete:focus {
+  outline: 0;
+  box-shadow: none;
+}
+body #todo-review-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #todo-review-footer button:hover {
+  background-color: #e63946;
+}
+body #allReviewHeader {
+  background-color: #457B9D;
+  color: white;
+}
+body #reviewModalHeader {
+  background-color: #e63946;
+  color: white;
+}
+body #todo-review-post-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #todo-review-post-footer button:hover {
+  background-color: #457B9D;
+}
+body #todo-review-post input {
+  width: 60px;
+  text-align: center;
+}
+body #deleteModalLabel {
+  background-color: #e63946;
+  color: white;
+}
+body #todo-delete-confirm:hover {
+  background-color: #e63946;
+}
+body #deleteModalLabel h5 {
+  font-size: 18px;
 }
 body #footer {
   gap: 15px;
@@ -233,14 +331,15 @@ body #user-card:hover span {
   border-radius: 5px;
 }
 body #userProfileModal-header {
-  background-color: #A8DADC;
+  background-color: #e63946;
   border-bottom: 2px solid black;
+  color: white;
 }
 body #userProfile {
   border: 2px solid black;
 }
 body .btn-dark:hover {
-  background-color: #e63946;
+  background-color: #457B9D;
 }
 
 /*# sourceMappingURL=main.css.map */
