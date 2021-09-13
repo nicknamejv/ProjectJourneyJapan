@@ -6,182 +6,240 @@
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
-        <div class="container">
-            <h1>Things To Do Show Page</h1>
-            
-            <img src="<%= thingstodo.image %> " alt="<%= thingstodo.title %> " />
-            <p>
-                <%= thingstodo.title %>
-            </p>
-            <p>
-                <%= thingstodo.description %>
-            </p>
-        </div>
-
+            <div class="container">
+                <img src="<%= thingstodo.image %> " alt="<%= thingstodo.title %> " />
+                <p>
+                    <%= thingstodo.title %>
+                </p>
+                <p>
+                    <%= thingstodo.description %>
+                </p>
+            </div>
             <!-- REVIEW AREA  -->
-            <h1>REVIEWS</h1>
-            <% reviews.forEach(allReview=> { %>
-                <p>
-                    <%= allReview.rating %>/5
-                </p>
-                <p>@<%= allReview.user.username %>:</p>
-                <p>" <%= allReview.content %> "</p>
-                <p>
-                    <%= new Date(allReview.createdAt).toLocaleString() %>
-                </p>
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h1>Reviews:</h1>
+                    <!-- Review Button trigger modal -->
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#reviewModal"
+                        id="todo-add-btn">
+                        <svg id="todo-add-btn-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                            fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <% reviews.forEach(allReview=> { %>
+                    <div class="card p-3" id="todo-review-card">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p>
+                                <% for( let i=0; i < 5; i++ ) { %>
+                                    <% if (allReview.rating> i) { %>
+                                        <span id="review-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="gold"
+                                                class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </span>
+                                        <% } else { %>
+                                            <span id="review-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                    fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                </svg>
+                                            </span>
+                                            <% } %>
+                                                <% } %>
+                            </p>
+                            <p>
+                                <%= new Date(allReview.createdAt).toLocaleString() %>
+                            </p>
+                        </div>
+                        <div id="todo-user-date">
+                            <p class="d-flex flex-column p-1 m-1">
+                                <img class="img-thumbnail" src="<%= allReview.user.avatar %>" alt="avatar" width="80px"
+                                    height="80px" id="todo-review-user-img">
+                                @<%= allReview.user.username %>:
+                            </p>
+                            <p id="todo-user-content">
+                                " <%= allReview.content %> "
+                            </p>
+                        </div>
+                        
+                        <!-- If User is logged in -->
+                        <% if (typeof user !=='undefined' ) { %>
+                            <div class="d-flex align-items-center justify-content-end" id="review-edit-delete">
+                                <!-- Edit trigger modal -->
+                                <button id="todo-btn-edit" type="button" class="toggle-modal p-1 btn btn-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#allReviewModal-<%= allReview._id %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor"
+                                        class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg>
+                                </button>
 
-                <!-- EACH REVIEW MODAL -->
-                <div class="modal fade" id="allReviewModal-<%= allReview._id %>" tabindex="-1"
-                    aria-labelledby="allReviewModalLabel" aria-hidden="true">
+                                <!-- DELETE trigger modal -->
+                                <button id="todo-btn-delete" type="button" class="toggle-modal p-1 btn btn-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal-<%= allReview._id %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        <% } %>
+                    </div>
+                <br>
+
+                <!-- EACH EDIT REVIEW MODAL -->
+                        <div class="modal fade" id="allReviewModal-<%= allReview._id %>" tabindex="-1"
+                            aria-labelledby="allReviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="allReviewHeader">
+                                        <h5 class="modal-title" id="allReviewModalLabel">Edit Review!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form action="/reviews/<%= allReview._id %>?_method=PUT" method="POST">
+                                                <div class="mb-3" id="todo-rating">
+                                                    <label>Rating:</label>
+                                                    <div>
+                                                        <input
+                                                        type="number"
+                                                        name="rating"
+                                                        min="1" max="5"
+                                                        placeholder="1-5" value="<%= allReview.rating %>"
+                                                        required />
+                                                    </div>
+                                                </div>
+                                                <div class="form mb-3">
+                                                    <label>Content:</label>
+                                                    <textarea 
+                                                    class="form-control" 
+                                                    placeholder="What do you think?" 
+                                                    style="height: 100px"
+                                                    name="content"
+                                                    required><%= allReview.content %></textarea>
+                                                </div>
+
+                                                <!-- Here is our hidden input to provide the thingstodo id -->
+                                                <input type="hidden" name="thingstodo" value="<%= thingstodo._id %>" />
+
+                                                <div class="modal-footer" id="todo-review-footer">
+                                                    <button type="submit" class="btn btn-secondary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- DELETE Modal -->
+                <div class="modal fade" id="deleteModal-<%= allReview._id %>" tabindex="-1"
+                    aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="allReviewModalLabel">Edit Review!</h5>
+                            <div class="modal-header" id="deleteModalLabel">
+                                <h5 class="modal-title">
+                                    Are you sure you want to delete this review?
+                                </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <div class="container">
-                                    <form action="/reviews/<%= allReview._id %>?_method=PUT" method="POST">
-                                        <div class="mb-3">
-                                            <label>Rating</label>
-                                            <div>
-                                                <input type="number" name="rating" min="1" max="5" placeholder="1-5"
-                                                    value="<%= allReview.rating %>" required />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Content</label>
-                                            <div>
-                                                <input type="text" name="content" minlength="1" maxlength="100"
-                                                    placeholder="What do you think?" value="<%= allReview.content %> "
-                                                    required />
-                                            </div>
-                                        </div>
-
-                                        <!-- Here is our hidden input to provide the thingstodo id -->
-                                        <input type="hidden" name="thingstodo" value="<%= thingstodo._id %>" />
-
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="modal-body">" <%= allReview.content %> "</div>
+                            <div class="modal-footer" id="delete-modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <form action="/reviews/<%= allReview._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                <% }) %>
 
-                <!-- If User is logged in -->
-                <% if (typeof user !=='undefined' ) { %>
-                    <div id="review-edit-delete">
-                        <button type="button" class="toggle-modal" data-bs-toggle="modal"
-                            data-bs-target="#allReviewModal-<%= allReview._id %>">
-                            Edit
-                        </button>
+                    <!-- REVIEW MODAL -->
+                    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header" id="reviewModalHeader">
+                                    <h5 class="modal-title" id="reviewModalLabel">Create Review!</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <form action="/reviews?redirect=thingstodo%2F<%= thingstodo._id %>"
+                                            method="POST">
+                                            <div class="mb-3" id="todo-review-post">
+                                                <label>Rating</label>
+                                                <div>
+                                                    <input
+                                                    type="number"
+                                                    name="rating"
+                                                    min="1" max="5"
+                                                    placeholder="1-5"
+                                                    autofocus
+                                                    required />
+                                                </div>
+                                            </div>
 
-                        <!-- DELETE trigger modal -->
-                        <button type="button" class="toggle-modal" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal-<%= allReview._id %>">
-                            Delete
-                        </button>
-                    </div>
-                    <% } %>
+                                            <div class="form mb-3">
+                                                <label>Content:</label>
+                                                <textarea 
+                                                class="form-control" 
+                                                placeholder="What do you think?" 
+                                                style="height: 100px"
+                                                name="content"
+                                                required></textarea>
+                                            </div>
 
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deleteModal-<%= allReview._id %>" tabindex="-1"
-                            aria-labelledby="deleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">
-                                            Are you sure you want to delete this review?
-                                        </h5>
-                                    </div>
-                                    <div class="modal-body">" <%= allReview.content %> "</div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                            Cancel
-                                        </button>
-                                        <form action="/reviews/<%= allReview._id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-primary">Confirm</button>
+
+                                            <!-- Here is our hidden input to provide the thingstodo id -->
+                                            <input type="hidden" name="thingstodo" value="<%= thingstodo._id %>" />
+
+                                            <% if (typeof user !=='undefined' ) { %>
+                                                <!-- Here is our hidden input to provide the user id -->
+                                                <input type="hidden" name="user" value="<%= user._id %>" />
+                                                <div class="modal-footer" id="todo-review-post-footer">
+                                                    <button type="submit" class="btn btn-secondary">Submit</button>
+                                                </div>
+                                                <% } else if (typeof user==='undefined' ) { %>
+                                                    <div class="modal-footer" id="todo-review-post-footer">
+                                                        <button type="submit" class="btn btn-secondary">Submit</button>
+                                                    </div>
+                                                    <% } %>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <% }) %>
+                    </div>
 
-                            <!-- Review Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#reviewModal">
-                                Create Review!
-                            </button>
-
-                            <!-- REVIEW MODAL -->
-                            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="reviewModalLabel">Create Review!</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <form action="/reviews?redirect=thingstodo%2F<%= thingstodo._id %>"
-                                                    method="POST">
-                                                    <div class="mb-3">
-                                                        <label>Rating</label>
-                                                        <div>
-                                                            <input type="number" name="rating" min="1" max="5"
-                                                                placeholder="1-5" required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label>Content</label>
-                                                        <div>
-                                                            <input type="text" name="content" minlength="1"
-                                                                maxlength="100" placeholder="What do you think?"
-                                                                required />
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Here is our hidden input to provide the thingstodo id -->
-                                                    <input type="hidden" name="thingstodo"
-                                                        value="<%= thingstodo._id %>" />
-
-                                                    <% if (typeof user !=='undefined' ) { %>
-                                                        <!-- Here is our hidden input to provide the user id -->
-                                                        <input type="hidden" name="user" value="<%= user._id %>" />
-                                                        <div class="modal-footer">
-                                                            <button type="submit"
-                                                                class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                        <% } else if (typeof user==='undefined' ) { %>
-                                                            <div class="modal-footer">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Submit</button>
-                                                            </div>
-                                                            <% } %>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Back to top button -->
-                            <button
-                            type="button"
-                            class="btn btn-danger btn-floating btn-sml"
-                            id="btn-back-to-top"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                </svg>
-                                TOP OF PAGE
-                            </button>
+                    <!-- Back to top button -->
+                    <button type="button" class="btn btn-danger btn-floating btn-sml" id="btn-back-to-top">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                        </svg>
+                        TOP OF PAGE
+                    </button>
     </body>
+
 </html>
