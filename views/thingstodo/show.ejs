@@ -6,14 +6,22 @@
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
-            <div class="container">
-                <img src="<%= thingstodo.image %> " alt="<%= thingstodo.title %> " />
-                <p>
-                    <%= thingstodo.title %>
-                </p>
-                <p>
-                    <%= thingstodo.description %>
-                </p>
+            <div class="container p-4 d-flex align-items-center justify-content-center">
+                <div class="card m-2 p-2" style="width: 50rem" id="todo-show-card">
+                    <img
+                    class="card-img-top img-thumbnail border-2 border-dark" 
+                    src="<%= thingstodo.image %> " 
+                    alt="<%= thingstodo.title %> " />
+                    <div class="card-body">
+                        <p class="card-title" style="text-decoration: underline;">
+                            <%= thingstodo.title %>
+                            
+                        </p>
+                        <p class="card-text">
+                            " <%= thingstodo.description %> "
+                        </p>
+                    </div>
+                </div>
             </div>
             <!-- REVIEW AREA  -->
             <div class="container">
@@ -61,7 +69,9 @@
                             <p class="d-flex flex-column p-1 m-1">
                                 <img class="img-thumbnail" src="<%= allReview.user.avatar %>" alt="avatar" width="80px"
                                     height="80px" id="todo-review-user-img">
-                                @<%= allReview.user.username %>:
+                                <a href="/profile/<%= allReview.user.id %> " id="todo-user-review-link">
+                                    @<%= allReview.user.username %>:
+                                </a>
                             </p>
                             <p id="todo-user-content">
                                 " <%= allReview.content %> "
@@ -106,7 +116,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header" id="allReviewHeader">
                                         <h5 class="modal-title" id="allReviewModalLabel">Edit Review!</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -155,7 +165,7 @@
                                 <h5 class="modal-title">
                                     Are you sure you want to delete this review?
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                             </div>
                             <div class="modal-body">" <%= allReview.content %> "</div>
@@ -179,7 +189,7 @@
                             <div class="modal-content">
                                 <div class="modal-header" id="reviewModalHeader">
                                     <h5 class="modal-title" id="reviewModalLabel">Create Review!</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
