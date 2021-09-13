@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
 app.use('/journeyjapan', controllers.journeyjapan);
 app.use('/city', controllers.city);
 app.use('/dosanddonts', controllers.donsanddonts);
-app.use('/profile', authRequired, controllers.profile);
+app.use('/profile', controllers.profile);
 app.use('/reviews', controllers.reviews);
 app.use('/thingstodo', controllers.thingstodo);
 app.use('/', controllers.auth);

@@ -60,8 +60,6 @@ router.put('/:id', authRequired, async (req, res, next) => {
             { $set: req.body },
             { new: true });
 
-        // const allThingsToDo = await ThingsToDo.find({ thingstodo: updatedReview.thingstodo }).populate('thingstodo');
-
         const context = {
             review: updatedReview,
             // thingstodo: allThingsToDo,

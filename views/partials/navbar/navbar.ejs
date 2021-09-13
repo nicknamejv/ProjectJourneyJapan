@@ -26,7 +26,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <% cities.forEach(allCities => { %>
                             <li>
-                                <a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a>
+                                <a class="dropdown-item" href="/city/<%= allCities._id %>"><%= allCities.city %></a>
                             </li>
                         <% }) %>
                     </ul>
@@ -35,7 +35,7 @@
                     <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
                 </li>
                 <p>
-                    <a class="nav-link" href="/profile">
+                    <a class="nav-link" href="/profile/<%= user.id %>">
                         @<%= user.username %>
                     </a>
                 </p>
@@ -45,22 +45,6 @@
 
             <!-- If user is NOT logged in -->
             <% } else if (typeof user === 'undefined' ) { %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        City
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <% cities.forEach(allCities => { %>
-                            <li>
-                                <a class="dropdown-item" href="/city/<%= allCities._id %> "><%= allCities.city %></a>
-                            </li>
-                        <% }) %>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Log In</a>
                 </li>
