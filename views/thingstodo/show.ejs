@@ -6,17 +6,18 @@
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
-            <div class="container p-4 d-flex align-items-center justify-content-center">
+            <div class="container d-flex justify-content-center my-3">
+                <h3 id="todo-show-title">
+                    <%= thingstodo.title %>
+                </h3>
+            </div>
+            <div class="container p-2 d-flex align-items-center justify-content-center">
                 <div class="card m-2 p-2" style="width: 50rem" id="todo-show-card">
                     <img
                     class="card-img-top img-thumbnail border-2 border-dark" 
                     src="<%= thingstodo.image %> " 
                     alt="<%= thingstodo.title %> " />
                     <div class="card-body">
-                        <p class="card-title" style="text-decoration: underline;">
-                            <%= thingstodo.title %>
-                            
-                        </p>
                         <p class="card-text">
                             " <%= thingstodo.description %> "
                         </p>
@@ -79,7 +80,7 @@
                         </div>
                         
                         <!-- If User is logged in -->
-                        <% if (typeof user !=='undefined' ) { %>
+                        <% if (typeof user !== 'undefined') { %>
                             <div class="d-flex align-items-center justify-content-end" id="review-edit-delete">
                                 <!-- Edit trigger modal -->
                                 <button id="todo-btn-edit" type="button" class="toggle-modal p-1 btn btn-secondary"
@@ -109,7 +110,7 @@
                     </div>
                 <br>
 
-                <!-- EACH EDIT REVIEW MODAL -->
+                        <!-- EACH EDIT REVIEW MODAL -->
                         <div class="modal fade" id="allReviewModal-<%= allReview._id %>" tabindex="-1"
                             aria-labelledby="allReviewModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">

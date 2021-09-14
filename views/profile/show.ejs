@@ -19,17 +19,17 @@
                             Edit Profile
                         </span>
                         <h5 class="user-card-title">
-                            Hello @<%= user.username %>!
+                            Hello @<%= profile.username %>!
                         </h5>
                         <img
                         class="card-img-top img-thumbnail border-2 border-dark"
-                        src="<%= user.avatar %>" 
+                        src="<%= profile.avatar %>" 
                         alt="user-avatar" 
                         width="350" 
                         height="525">
                         <div class="card-body">
                             <p class="card-text" id="user-card-text">
-                                " <%= user.bio %> "
+                                " <%= profile.bio %> "
                             </p>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
             <div class="col">
                 <div id="user-reviews-all">
                     <h1>
-                        @<%= user.username %>'s  Post:
+                        @<%= profile.username %>'s  Post:
                     </h1>
                     <% review.forEach(allUserReviews => { %>
                         <a href="/thingstodo/<%= allUserReviews.thingstodo.id %> " id="user-reviews-link">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form action="/profile/<%= user._id %>?_method=PUT"
+                        <form action="/profile/<%= profile._id %>?_method=PUT"
                             method="POST">
                             <div class="mb-3">
                                 <label>Profile Picture:</label>
@@ -101,7 +101,7 @@
                                 class="form-control" 
                                 placeholder="https://"
                                 name="avatar"
-                                value="<%= user.avatar %>"
+                                value="<%= profile.avatar %>"
                                 required
                                 autofocus/>
                             </div>
@@ -112,7 +112,7 @@
                                 placeholder="Write a bio!" 
                                 style="height: 100px"
                                 name="bio"
-                                required><%= user.bio %></textarea>
+                                required><%= profile.bio %></textarea>
                             </div>
 
                             <% if (typeof user !=='undefined' ) { %>
