@@ -250,6 +250,10 @@ body #todo-user-review-link:hover {
   font-size: 20px;
   color: #e63946;
 }
+body #todo-show-title {
+  font-size: 50px;
+  text-decoration: underline;
+}
 body #footer {
   gap: 15px;
   font-size: 18px;

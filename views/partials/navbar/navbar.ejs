@@ -2,8 +2,7 @@
     <div class="container-fluid" id="navbar-bar">
         <a class="navbar-brand" href="/journeyjapan">
             <div class="d-flex align-items-center">
-                <img src="/assets/fuji.png" alt="logo" width="50" height="50"
-                    class="d-inline-block align-top ms-3">
+                <img src="/assets/fuji.png" alt="logo" width="50" height="50" class="d-inline-block align-top ms-3">
                 <h2 class="ps-3" id="journeyjapan-title">
                     <strong>
                         Journey Japan
@@ -11,49 +10,113 @@
                 </h2>
             </div>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end"  id="navbarNavDropdown">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
-            <!-- If user IS logged in -->
-            <% if (typeof user !== 'undefined' ) { %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        City
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <% cities.forEach(allCities => { %>
-                            <li>
-                                <a class="dropdown-item" href="/city/<%= allCities._id %>"><%= allCities.city %></a>
-                            </li>
-                        <% }) %>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
-                </li>
-                <p>
-                    <a class="nav-link" href="/profile/<%= user.id %>">
-                        @<%= user.username %>
-                    </a>
-                </p>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
+                <!-- If user IS logged in -->
+                <% if (typeof user !=='undefined' ) { %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            City
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <% cities.forEach(allCities=> { %>
+                                <li>
+                                    <a class="dropdown-item" href="/city/<%= allCities._id %>">
+                                        <%= allCities.city %>
+                                    </a>
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dosanddonts">Do's & Don'ts</a>
+                    </li>
+                    <p>
+                        <a class="nav-link" href="/profile/<%= user.id %>">
+                            @<%= user.username %>
+                        </a>
+                    </p>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
 
-            <!-- If user is NOT logged in -->
-            <% } else if (typeof user === 'undefined' ) { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup">Sign Up</a>
-                </li>
-            <% } %>
+                    <!-- If user is NOT logged in -->
+                    <% } else if (typeof user==='undefined' ) { %>
+                        <li class="nav-item">
+                            <a 
+                            id="login-btn"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#loginModal" 
+                            class="nav-link" href="/login">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Sign Up</a>
+                        </li>
+                        <% } %>
             </ul>
-            <!-- PLACE HOLDER -->
+
+            <!-- Login trigger modal -->
+                <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header" id="loginHeader">
+                                <h5 class="modal-title" id="loginModalLabel">User Login</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <form action="/login" method="POST" class="needs-validation" novalidate>
+                                        <div class="col-md-4">
+                                            <label for="validationCustomUsername" class="form-label">Username</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input type="text" name="username" class="form-control"
+                                                    id="validationCustomUsername" aria-describedby="inputGroupPrepend"
+                                                    placeholder="ExampleUser" required autofocus>
+                                                <div class="invalid-feedback">
+                                                    Username is not correct!
+
+                                                </div>
+                                                <div class="valid-feedback">
+                                                    Username is valid!
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="col-md-4">
+                                            <label for="validationPassword" class="form-label">Password</label>
+                                            <input type="password" name="password" class="form-control"
+                                                id="validationPassword"
+                                                placeholder="Please enter your correct password." required>
+                                            <div class="invalid-feedback">
+                                                Password is not correct!
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Password is valid!
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-secondary" type="submit">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
         </div>
     </div>
 </nav>

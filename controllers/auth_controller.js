@@ -86,7 +86,8 @@ router.post('/login', async (req, res) => {
         const match = await bcrypt.compare(req.body.password, foundUser.password);
 
         // if not match we will send error
-        if (!match) return res.send('Your passsword is invalid!');
+        // if (!match) return res.send('Your passsword is invalid!');
+        if (!match) return res.redirect('/journeyjapan');
 
         // if match then create the session and redirect to home page
         req.session.currentUser = {

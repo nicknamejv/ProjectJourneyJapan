@@ -11,7 +11,7 @@ router.get('/:id', async (req, res, next) => {
         const allUserReviews = await Review.find({ user: req.params.id }).populate('user thingstodo');
 
         const context = {
-            user: foundUser,
+            profile: foundUser,
             cities: allCities,
             review: allUserReviews,
         };
