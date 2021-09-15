@@ -13,15 +13,17 @@
             </div>
             <div class="container p-2 d-flex align-items-center justify-content-center">
                 <div class="card m-2 p-2" style="width: 50rem" id="todo-show-card">
-                    <img
-                    class="card-img-top img-thumbnail border-2 border-dark" 
-                    src="<%= thingstodo.image %> " 
-                    alt="<%= thingstodo.title %> " />
-                    <div class="card-body">
-                        <p class="card-text">
-                            " <%= thingstodo.description %> "
-                        </p>
-                    </div>
+                    <a href="/city/<%= thingstodo.city._id %>">
+                        <img
+                        class="card-img-top img-thumbnail border-2 border-dark" 
+                        src="<%= thingstodo.image %> " 
+                        alt="<%= thingstodo.title %> " />
+                    </a>
+                        <div class="card-body">
+                            <p class="card-text">
+                                " <%= thingstodo.description %> "
+                            </p>
+                        </div>
                 </div>
             </div>
             <!-- REVIEW AREA  -->

@@ -28,22 +28,22 @@ router.get('/:id', authRequired, async (req, res, next) => {
 });
 
 // NOTE: Create Route
-// router.post('/', authRequired, async (req, res, next) => {
-//     try {
-//         const todo = {
-//             ...req.body,
-//         };
+router.post('/', authRequired, async (req, res, next) => {
+    try {
+        const todo = {
+            ...req.body,
+        };
 
-//         const createdTodo = await ThingsToDo.create(todo);
+        const createdTodo = await ThingsToDo.create(todo);
 
-//         return res.redirect(`/${req.query.redirect}`);
+        return res.redirect(`/${req.query.redirect}`);
 
-//     } catch (error) {
-//         console.log(error);
-//         req.error = error;
-//         return next();
-//     };
-// });
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    };
+});
 
 // NOTE: UPDATE Route
 router.put('/:id', authRequired, async (req, res, next) => {
@@ -52,7 +52,22 @@ router.put('/:id', authRequired, async (req, res, next) => {
             { $set: req.body },
             { new: true });
 
-        return res.redirect('/thingstodo');
+        return res.redirect(`/city/${updatedThingsToDo.city}`);
+
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    };
+});
+
+// NOTE: Delete Route
+router.delete('/:id', authRequired, async (req, res, next) => {
+    try {
+        const deletedThingsToDo = await ThingsToDo.findByIdAndDelete(req.params.id);
+        const deletedReviews = await Review.deleteMany({ thingstodo: req.params.id });
+
+        return res.redirect(`/city/${deletedThingsToDo.city}`);
 
     } catch (error) {
         console.log(error);
