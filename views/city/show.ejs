@@ -1,98 +1,375 @@
 <html lang="en">
-    <!-- Head Partial -->
-    <%- include('../partials/head/head.ejs', { page: city.city }) %>
+<!-- Head Partial -->
+<%- include('../partials/head/head.ejs', { page: city.city }) %>
 
-<body>
-    <!-- Navbar Partial -->
-    <%- include ('../partials/navbar/navbar.ejs') %>
-    <main id="city-main">
-        <div class="container d-flex justify-content-center my-2">
-            <h1 id="city-title">
-                <%= city.city %>
-            </h1>
-        </div>
-        <div class="container-fluid my-2 p-2" id="city-show">
-            <img 
-            src="<%= city.image %>"
-            alt="<%= city.city %>"
-            class="img-thumbnail border-5 border-dark"
-            id="city-image">
-            <div class="card p-3" id="city-card">
-                <p id="city-description">
-                    " <%= city.description %> "
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <div class="container d-flex justify-content-center my-5 p-2" id="city-todos">
-        <section class="container-fluid" id="todo">
-            <div id="todo-food">
-                <h1 class="display-4" id="todo-food-title">
-                    What To Eat? 
-                </h1>
-            </div>
-            <% thingstodofood.forEach(foundThingsToDoFood => { %>
-                <a href="/thingstodo/<%= foundThingsToDoFood._id %>" id="todo-link">
-
-                    <br>
-
-                    <div class="card p-3 m-3" id="todo-card">
-                        <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
-                        <div class="card-body">
-                            <h3 class="card-title" id="todo-title">
-                                <strong>
-                                    <%= foundThingsToDoFood.title %>
-                                </strong>
-                            </h3>
-                            <p class="card-text">
-                                " <%= foundThingsToDoFood.description %> "
-                            </p>
+    <body>
+        <!-- Navbar Partial -->
+        <%- include ('../partials/navbar/navbar.ejs') %>
+            <main id="city-main">
+                <div class="container d-flex justify-content-center my-2">
+                    <h1 id="city-title">
+                        <%= city.city %>
+                    </h1>
+                </div>
+                <div class="container-fluid my-2 p-2" id="city-show">
+                    <img src="<%= city.image %>" alt="<%= city.city %>" class="img-thumbnail border-5 border-dark"
+                        id="city-image">
+                    <div class="card p-3" id="city-card">
+                        <p id="city-description">
+                            " <%= city.description %> "
+                        </p>
+                        <!-- Review Button trigger modal -->
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#cityTodoModal"
+                                id="city-todo-modal-add-btn">
+                                <span>
+                                    Any recommendations?
+                                </span>
+                                <svg id="city-todo-modal-add-btn-svg" xmlns="http://www.w3.org/2000/svg" width="40"
+                                    height="40" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
-                </a>
-            <% }) %>
-        </section>
-        
-        <section class="container" id="todo">
-            <div id="todo-attraction">
-                <h1 class="display-4" id="todo-attraction-title">
-                    What To See? 
-                </h1>
+                </div>
+            </main>
+
+            <div class="container d-flex justify-content-center my-5 p-2" id="city-todos">
+                <section class="container-fluid" id="todo">
+                    <div id="todo-food">
+                        <h1 class="display-4" id="todo-food-title">
+                            What To Eat?
+                        </h1>
+                    </div>
+                    <% thingstodofood.forEach(foundThingsToDoFood=> { %>
+                        <br>
+                        <div class="card p-3 m-3" id="todo-card">
+                            <!-- If User is logged in -->
+                            <% if (user.username==='admin' ) { %>
+                                <div class="d-flex align-items-center justify-content-end" id="review-edit-delete">
+                                    <!-- Edit trigger modal -->
+                                    <button id="todo-btn-edit" type="button" class="toggle-modal p-1 btn btn-secondary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#allReviewModal-<%= foundThingsToDoFood._id %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
+                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- DELETE trigger modal -->
+                                    <button id="todo-btn-delete" type="button"
+                                        class="toggle-modal p-1 btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-<%= foundThingsToDoFood._id %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <% } %>
+                                    <br>
+                                    <a href="/thingstodo/<%= foundThingsToDoFood._id %>" id="todo-link">
+                                        <img class="img-thumbnail border-3 border-dark"
+                                            src="<%= foundThingsToDoFood.image %>" alt="image" id="todo-image-show">
+                                        <div class="card-body">
+                                            <h3 class="card-title" id="todo-title">
+                                                <strong>
+                                                    <%= foundThingsToDoFood.title %>
+                                                </strong>
+                                            </h3>
+                                            <p class="card-text">
+                                                " <%= foundThingsToDoFood.description %> "
+                                            </p>
+                                        </div>
+                                    </a>
+                        </div>
+
+                        <!-- EACH EDIT TODO MODAL -->
+                        <div class="modal fade" id="allReviewModal-<%= foundThingsToDoFood._id %>" tabindex="-1"
+                            aria-labelledby="allReviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="allReviewHeader">
+                                        <h5 class="modal-title" id="allReviewModalLabel">Edit Things To Do!</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form action="/thingstodo/<%= foundThingsToDoFood._id %>?_method=PUT"
+                                                method="POST">
+                                                <div class="mb-3">
+                                                    <label>Title</label>
+                                                    <input type="text" name="title" class="form-control"
+                                                        placeholder="What is it called?"
+                                                        value="<%= foundThingsToDoFood.title %> " autofocus required />
+                                                </div>
+                                                <div class="form mb-3">
+                                                    <label>Description:</label>
+                                                    <textarea class="form-control" placeholder="Give me a description!"
+                                                        style="height: 100px" name="description"
+                                                        required><%= foundThingsToDoFood.description%></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label>Add a Image:</label>
+                                                    <input type="text" class="form-control" placeholder="https://"
+                                                        name="image" value="<%= foundThingsToDoFood.image %>" required
+                                                        autofocus />
+                                                </div>
+
+                                                <!-- Category hidden input -->
+                                                <input type="hidden" name="category"
+                                                    value="<%= foundThingsToDoFood.category %>" />
+
+                                                <!-- City hidden input -->
+                                                <input type="hidden" name="city" value="<%= city._id %>" />
+                                                <div class="modal-footer" id="todo-review-footer">
+                                                    <button type="submit" class="btn btn-secondary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DELETE Modal -->
+                        <div class="modal fade" id="deleteModal-<%= foundThingsToDoFood._id %>" tabindex="-1"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="deleteModalLabel">
+                                        <h5 class="modal-title">
+                                            Are you sure you want to delete?
+                                        </h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Title: " <%= foundThingsToDoFood.title %> "
+                                    </div>
+                                    <div class="modal-footer" id="delete-modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                        <form action="/thingstodo/<%= foundThingsToDoFood._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </section>
+
+
+                <section class="container" id="todo">
+                    <div id="todo-attraction">
+                        <h1 class="display-4" id="todo-attraction-title">
+                            What To See?
+                        </h1>
+                    </div>
+                    <% thingstodoattraction.forEach(foundThingsToDoAttraction=> { %>
+                        <br>
+                        <div class="card p-3 m-3" id="todo-card">
+                            <!-- If User is logged in -->
+                            <% if (user.username === 'admin' ) { %>
+                                <div class="d-flex align-items-center justify-content-end" id="review-edit-delete">
+                                    <!-- Edit trigger modal -->
+                                    <button id="todo-btn-edit" type="button" class="toggle-modal p-1 btn btn-secondary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#allReviewModal-<%= foundThingsToDoAttraction._id %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
+                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- DELETE trigger modal -->
+                                    <button id="todo-btn-delete" type="button"
+                                        class="toggle-modal p-1 btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-<%= foundThingsToDoAttraction._id %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <% } %>
+                                    <br>
+                                    <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
+                                        <img class="img-thumbnail border-3 border-dark"
+                                            src="<%= foundThingsToDoAttraction.image %>" alt="image"
+                                            id="todo-image-show">
+                                        <div class="card-body">
+                                            <h3 class="card-title" id="todo-title">
+                                                <strong>
+                                                    <%= foundThingsToDoAttraction.title %>
+                                                </strong>
+                                            </h3>
+                                            <p class="card-text">
+                                                " <%= foundThingsToDoAttraction.description %> "
+                                            </p>
+                                        </div>
+                                    </a>
+                        </div>
+
+                        <!-- EACH EDIT TODO MODAL -->
+                        <div class="modal fade" id="allReviewModal-<%= foundThingsToDoAttraction._id %>" tabindex="-1"
+                            aria-labelledby="allReviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="allReviewHeader">
+                                        <h5 class="modal-title" id="allReviewModalLabel">Edit Things To Do!</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form action="/thingstodo/<%= foundThingsToDoAttraction._id %>?_method=PUT" method="POST">
+                                                <div class="mb-3">
+                                                    <label>Title</label>
+                                                    <input type="text" name="title" class="form-control"
+                                                        placeholder="What is it called?"
+                                                        value="<%= foundThingsToDoAttraction.title %> " autofocus required />
+                                                </div>
+                                                <div class="form mb-3">
+                                                    <label>Description:</label>
+                                                    <textarea class="form-control" placeholder="Give me a description!"
+                                                        style="height: 100px" name="description"
+                                                        required><%= foundThingsToDoAttraction.description%></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label>Add a Image:</label>
+                                                    <input type="text" class="form-control" placeholder="https://"
+                                                        name="image" value="<%= foundThingsToDoAttraction.image %>" required
+                                                        autofocus />
+                                                </div>
+
+                                                <!-- Category hidden input -->
+                                                <input type="hidden" name="category"
+                                                    value="<%= foundThingsToDoAttraction.category %>" />
+
+                                                <!-- City hidden input -->
+                                                <input type="hidden" name="city" value="<%= city._id %>" />
+                                                <div class="modal-footer" id="todo-review-footer">
+                                                    <button type="submit" class="btn btn-secondary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DELETE Modal -->
+                        <div class="modal fade" id="deleteModal-<%= foundThingsToDoAttraction._id %>" tabindex="-1"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="deleteModalLabel">
+                                        <h5 class="modal-title">
+                                            Are you sure you want to delete?
+                                        </h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Title: " <%= foundThingsToDoAttraction.title %> "
+                                    </div>
+                                    <div class="modal-footer" id="delete-modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                        <form action="/thingstodo/<%= foundThingsToDoAttraction._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </section>
             </div>
-            <% thingstodoattraction.forEach(foundThingsToDoAttraction => { %>
-                <a href="/thingstodo/<%= foundThingsToDoAttraction._id %>" id="todo-link">
 
-                    <br>
+            <!-- TODO MODAL -->
+            <div class="modal fade" id="cityTodoModal" tabindex="-1" aria-labelledby="cityTodoModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header" id="cityTodoModalHeader">
+                            <h5 class="modal-title" id="cityTodoModalLabel">Got any recommendations?</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <form action="/thingstodo?redirect=city%2F<%= city._id %>" method="POST">
+                                    <div class="mb-3">
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control"
+                                            placeholder="What is it called?" autofocus required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <select class="form-select" id="post_city_select"
+                                            aria-label="Floating label select example" name="category" autofocus>
+                                            <option value="none" selected disabled hidden>Select a Category</option>
+                                            <option value="Food">Food</option>
+                                            <option value="Attraction">Attraction</option>
+                                        </select>
+                                    </div>
+                                    <div class="form mb-3">
+                                        <label>Description:</label>
+                                        <textarea class="form-control" placeholder="Give me a description!"
+                                            style="height: 100px" name="description" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Add a Image:</label>
+                                        <input type="text" class="form-control" placeholder="https://" name="image"
+                                            required autofocus />
+                                    </div>
 
-                    <div class="card p-3 m-3" id="todo-card">
-                        <img class="img-thumbnail border-3 border-dark" src="<%= foundThingsToDoAttraction.image %>" alt="image" id="todo-image-show">
-                        <div class="card-body">
-                            <h3 class="card-title" id="todo-title">
-                                <strong>
-                                    <%= foundThingsToDoAttraction.title %>
-                                </strong>
-                            </h3>
-                            <p class="card-text">
-                                " <%= foundThingsToDoAttraction.description %> "
-                            </p>
+                                    <!-- City hidden input -->
+                                    <input type="hidden" name="city" value="<%= city._id %>" />
+
+                                    <% if (typeof user !=='undefined' ) { %>
+                                        <div class="modal-footer" id="city-todo-modal-footer">
+                                            <button type="submit" class="btn btn-secondary">Submit</button>
+                                        </div>
+                                        <% } %>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </a>
-            <% }) %>
-        </section>
-    </div>
+                </div>
+            </div>
 
-    <!-- Back to top button -->
-    <button
-    type="button"
-    class="btn btn-danger btn-floating btn-sml"
-    id="btn-back-to-top"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-        </svg>
-        TOP OF PAGE
-    </button>
-</body>
+            <!-- Back to top button -->
+            <button type="button" class="btn btn-danger btn-floating btn-sml" id="btn-back-to-top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                </svg>
+                TOP OF PAGE
+            </button>
+    </body>
+
 </html>

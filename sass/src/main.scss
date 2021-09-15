@@ -191,7 +191,8 @@ body {
     }
 
     #city-todos {
-        gap: 250px;
+        // gap: 200px;
+        gap: 60px;
     }
 
     #todo-food {
@@ -216,11 +217,12 @@ body {
     }
 
     #todo-card {
-        height: 730px;
+        height: 850px;
         width: 630px;
         border-radius: 5px;
         border: 2px solid black;
         transition: 0.3s !important;
+        overflow: scroll;
     }
 
     #todo-card:hover {
@@ -346,6 +348,41 @@ body {
     #todo-show-title {
         font-size: 50px;
         text-decoration: underline;
+    }
+
+    // NOTE: == City Todo Modal ==
+    #city-todo-modal-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #city-todo-modal-footer button:hover {
+        background-color: $primary-color;
+    }
+
+    #cityTodoModalHeader {
+        background-color: $third-color;
+        color: white;
+    }
+
+    #city-todo-modal-add-btn-svg {
+        transition: 0.3s;
+        fill: $primary-color;
+    }
+
+    #city-todo-modal-add-btn-svg:hover {
+        transform: scale(1.2);
+        fill: $third-color;
+    }
+
+    #city-todo-modal-add-btn:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+    
+    #city-todo-modal-add-btn span {
+        font-size: 25px;
     }
 
     //  NOTE: == FOOTER ==
@@ -498,8 +535,15 @@ body {
         margin: 8px;
     }
 
+    #signup-modal-content {
+        border: 2px solid black;
+        border-radius: 8px;
+    }
+
     // NOTE: DO'S & DON'TS
     #dosdonts-page {
-        border: 2px solid black;
+        border: 3px solid black;
+        background-image: url('/assets/lined_paper.png');
+        line-height: 1.3;
     }
 }

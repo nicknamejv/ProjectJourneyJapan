@@ -143,7 +143,7 @@ body #todo-review-user-img {
   border: 1px solid black;
 }
 body #city-todos {
-  gap: 250px;
+  gap: 60px;
 }
 body #todo-food {
   display: flex;
@@ -163,11 +163,12 @@ body #todo-link {
   color: inherit;
 }
 body #todo-card {
-  height: 730px;
+  height: 850px;
   width: 630px;
   border-radius: 5px;
   border: 2px solid black;
   transition: 0.3s !important;
+  overflow: scroll;
 }
 body #todo-card:hover {
   transform: scale(1.1);
@@ -268,6 +269,33 @@ body #todo-user-review-link:hover {
 body #todo-show-title {
   font-size: 50px;
   text-decoration: underline;
+}
+body #city-todo-modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #city-todo-modal-footer button:hover {
+  background-color: #e63946;
+}
+body #cityTodoModalHeader {
+  background-color: #457B9D;
+  color: white;
+}
+body #city-todo-modal-add-btn-svg {
+  transition: 0.3s;
+  fill: #e63946;
+}
+body #city-todo-modal-add-btn-svg:hover {
+  transform: scale(1.2);
+  fill: #457B9D;
+}
+body #city-todo-modal-add-btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+body #city-todo-modal-add-btn span {
+  font-size: 25px;
 }
 body #footer {
   gap: 15px;
@@ -388,8 +416,14 @@ body #signupModalLabel {
 body #signup-form-row label {
   margin: 8px;
 }
-body #dosdonts-page {
+body #signup-modal-content {
   border: 2px solid black;
+  border-radius: 8px;
+}
+body #dosdonts-page {
+  border: 3px solid black;
+  background-image: url("/assets/lined_paper.png");
+  line-height: 1.3;
 }
 
 /*# sourceMappingURL=main.css.map */
