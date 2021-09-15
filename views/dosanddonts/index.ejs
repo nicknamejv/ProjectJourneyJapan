@@ -1,28 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Head Partial -->
-    <%- include('../partials/head/head.ejs', { page: "Do's & Don'ts" }) %>
+<!-- Head Partial -->
+<%- include('../partials/head/head.ejs', { page: "Do's & Don'ts" }) %>
 
-<body>
-    <!-- Navbar Partial -->
-    <%- include ('../partials/navbar/navbar.ejs') %>
-    
-    <h1>Do's & Don'ts Page</h1>
+    <body>
+        <!-- Navbar Partial -->
+        <%- include ('../partials/navbar/navbar.ejs') %>
+
+            <div class="d-flex justify-content-center p-5">
+                <div class="card p-2" id="dosdonts-page">
+                    <div class="card-body d-flex justify-content-center">
+                        <h1 class="card-title display-4">
+                            <u>
+                                How to Japan!
+                            </u>
+                        </h1>
+                    </div>
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h1 class="display-5 d-flex justify-content-center">
+                                    Do's
+                                </h1>
+                                <ul class="list-unstyled">
+                                    <ul class="mx-3">
+                                        <li>Always research the weather before your arrival. Japan experiences the full weather cycle from humid and hot summer days to those frosty and windy winters.</li>
+                                        <li>Plan what you will do trust me it will create a better experience especially if you have some idea of what you're doing.</li>
+                                        <li>To enter Japan you will need your passport of course everyone knows that but not many knowns that if you use your passport in designated shopping stores you will be exempt from tax as long as you provide your passport upon checkout.</li>
+                                        <li>Ask your self "how much will I spend in Japan" because Japan is a country that doesn't take cards often like most of the world so their form of payment by default is cash. Make sure to convert your money prior to flying into Japan as usually the exchange rate within your county will better.</li>
+                                        <li>No need to buy a roaming plan from your cell provider as Japan offers a device called "pocket wifi". You will be able to grab this or even reserve it ahead of time at your airport of choice. This will allow you to have internet for you and your party. The rate for this service is very affordable and usually they are throughout your trip in which you pay upon returning the device.</li>
+                                        <li>Japan has a vast network of transportation so if you're not walking to get to your destination you will be opting and using one of these services. These services include the shinkansen, express train, highway/city bus, or ferry. The primary choice for many is the express trains and don't worry getting around is easier than you think just grab your phone and use Google from their following which signs to go to and which stops to get off is a breeze.</li>
+                                        <li>I mentioned the shinkansen as one of the transportation available in Japan and if your asking yourself "what is a shinkansen" basically it is a bullet train. Usually this train is used when traveling from city to city around Japan. These have a higher cost than the rest of the transportation but easily the best way to visit the cities around Japan. Bonus tip: grab a bento box from a local vendor prior to jumping into your shinkansen!</li>
+                                        <li>Speak the language! Yes this can be daunting and for many it will be something that they will not try but just even saying the words for "excuse me" or "thank you" will be greatly appreciated!</li>
+                                        <li>SLURP your noodles! This is actually a great way to tell the restaurant you are eating at that you love their food!</li>
+                                        <li>When walking around in Japan get used to being on the left side especially if you come from a country that drives on the right which should mean you usually will walk on the right side of sidewalk.</li>
+                                        <li>Of course most of all enjoy yourself! Japan is a country with so many things to offer and hidden in every street corner or alleyway is something worth stumbling upon. So travel off the beaten path and find something your wouldn't have otherwise! </li>
+
+                                    </ul>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <h1 class="display-5 d-flex justify-content-center">
+                                    Don'ts
+                                </h1>
+                                <ul class="list-unstyled">
+                                    <ul class="mx-3">
+                                        <li>Eating while walking is a big NO. Just because there are food stalls around serving food does not mean you should be walking around! This is something frowned upon in Japan so definitely do not do it!</li>
+                                        <li>When you decide to go to a onsen, also known as a hot spring, wash up first before going in otherwise this is considered dirty!</li>
+                                        <li>When riding the train or the bus do be quiet. You'll notice that it will be almost silent once you get on the bus or train as many Japanese do their best to not disturb others.</li>
+                                        <li>Do not tip or count your change! Tips is a concept that is not accepted in Japan and will not be required.</li>
+                                        <li>When purchasing in Japan they will usually have money tray or hand you one to use. Don't hand money to anyone you will put money on the tray in which they will take and if you have change they will put your change on the tray so don't assume they will drop the change into you hand!</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
 
 
-    <!-- Back to top button -->
-    <button
-    type="button"
-    class="btn btn-danger btn-floating btn-sml"
-    id="btn-back-to-top"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-        </svg>
-        TOP OF PAGE
-    </button>
-</body>
+            <!-- Back to top button -->
+            <button type="button" class="btn btn-danger btn-floating btn-sml" id="btn-back-to-top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                </svg>
+                TOP OF PAGE
+            </button>
+    </body>
+
 </html>

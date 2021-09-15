@@ -4,18 +4,6 @@ const router = express.Router();
 const { authRequired } = require('../utils/auth');
 const { Review, User } = require('../models');
 
-// NOTE: Show Route 
-// router.get('/:id', async (req, res, next) => {
-//     try {
-//         return res.render('reviews/index');
-
-//     } catch (error) {
-//         console.log(error);
-//         req.error = error;
-//         return next();
-//     };
-// });
-
 // NOTE: Create Route
 router.post('/', authRequired, async (req, res, next) => {
     try {
@@ -35,23 +23,6 @@ router.post('/', authRequired, async (req, res, next) => {
     };
 });
 
-// NOTE: Edit Route (Presentational)
-// router.get('/:id/edit', async (req, res, next) => {
-//     try {
-//         const foundReview = await Review.findById(req.params.id);
-
-//         const context = {
-//             review: foundReview,
-//         };
-
-//         return res.render('reviews/edit', context);
-
-//     } catch (error) {
-//         console.log(error);
-//         req.error = error;
-//         return next();
-//     };
-// });
 
 // NOTE: Edit Route (Functional)
 router.put('/:id', authRequired, async (req, res, next) => {
