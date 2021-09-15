@@ -5,8 +5,8 @@
 
     <body>
         <!-- Navbar Partial -->
-        <%- include ('../partials/navbar/navbar.ejs') %>
-
+        <%- include ('../partials/navbar/navbar.ejs') %><!-- Particle.js -->
+        <div id="particles-js"></div>
             <div class="modal-show p-2" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -25,7 +25,7 @@
                                                 <%= error %>
                                             </p>
                                         </div>
-                                        <% } %>        
+                                        <% } %>
                                 </div>
                                 <form action="/signup" method="POST" class="was-validated  m-3" novalidate>
                                     <div>
@@ -115,7 +115,8 @@
                     </div>
                 </div>
             </div>
-            </div>
+    <!-- Particle.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="/scripts/particles.js"></script>
     </body>
-
 </html>
