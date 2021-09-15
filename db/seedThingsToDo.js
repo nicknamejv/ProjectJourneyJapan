@@ -39,7 +39,7 @@ ThingsToDo.deleteMany({}, (error, deletedThingsToDo) => {
             },
 
             {
-                title: 'Tokyo DisneySea ',
+                title: 'Tokyo DisneySea',
                 description: "For all you Disney lovers this is an experience you will not forget. Between Tokyo DisneySea and Tokyo Disneyland many have dubbed DisneySea as the better of the two. With the whole sea theme going on you will see Mediterranean Harbor leading you to Mount Prometheus towering the distance. If you had a choice to pick Tokyo DisneySea will not disappoint!",
                 category: 'Attraction',
                 city: '613a90099ea08c7c6021e5df',

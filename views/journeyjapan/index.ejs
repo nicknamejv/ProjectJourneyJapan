@@ -7,6 +7,7 @@
     <!-- Navbar Partial -->
     <%- include ('../partials/navbar/navbar.ejs') %>
     <main>
+        <div id="particles-js"></div>
         <div id="carouselCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active"
@@ -87,7 +88,10 @@
             </div>
         </div>
     </section>
-
+    <!-- Particle.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="/scripts/particles.js"></script>
+    
     <!-- Footer Partial -->
     <%- include ('../partials/footer/footer.ejs') %>
 </body>

@@ -1,11 +1,14 @@
 <html lang="en">
 <!-- Head Partial -->
 <%- include('../partials/head/head.ejs', { page: city.city }) %>
-
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
-            <main id="city-main">
+            <div class="modal-show">
+                <div id="map"></div>
+            </div>
+            <script src="/scripts/googlemaps.js"></script>
+        <main id="city-main">
                 <div class="container d-flex justify-content-center my-2">
                     <h1 id="city-title">
                         <%= city.city %>
@@ -108,7 +111,7 @@
                                             <form action="/thingstodo/<%= foundThingsToDoFood._id %>?_method=PUT"
                                                 method="POST">
                                                 <div class="mb-3">
-                                                    <label>Title</label>
+                                                    <label>Title:</label>
                                                     <input type="text" name="title" class="form-control"
                                                         placeholder="What is it called?"
                                                         value="<%= foundThingsToDoFood.title %> " autofocus required />
@@ -323,7 +326,7 @@
                             <div class="container">
                                 <form action="/thingstodo?redirect=city%2F<%= city._id %>" method="POST">
                                     <div class="mb-3">
-                                        <label>Title</label>
+                                        <label>Title:</label>
                                         <input type="text" name="title" class="form-control"
                                             placeholder="What is it called?" autofocus required />
                                     </div>
@@ -371,5 +374,4 @@
                 TOP OF PAGE
             </button>
     </body>
-
 </html>

@@ -23,26 +23,6 @@ router.get('/signup', async (req, res, next) => {
     };
 });
 
-
-// NOTE: GET Login 
-// router.get('/login', async (req, res, next) => {
-//     try {
-//         const allCities = await City.find({});
-
-//         const context = {
-//             cities: allCities,
-//         };
-
-//         return res.render('auth/login', context);
-
-//     } catch (error) {
-//         console.log(error);
-//         req.error = error;
-//         return next();
-//     };
-// });
-
-
 // NOTE: POST Sign Up
 router.post('/signup', async (req, res) => {
     try {
@@ -120,8 +100,6 @@ router.get('/logout', async (req, res) => {
         return res.send(error);
     }
 });
-
-
 
 
 module.exports = router;
