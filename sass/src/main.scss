@@ -65,6 +65,26 @@ body {
         text-shadow: 2px 2px 2px $secondary-color;
     }
 
+    #loginHeader {
+        background-color: $primary-color;
+    }
+
+    #loginModalLabel {
+        color: white;
+    }
+
+    #login-btn-footer:hover {
+        background-color: $third-color;
+    }
+    
+    #login-user-input {
+        width: 450px;
+    }
+
+    #validationPassword-login {
+        width: 450px;
+    }
+
     // NOTE: == Landing Page ==
     #journey-japan-text {
         border: 2px solid black;
@@ -459,5 +479,27 @@ body {
 
     .btn-dark:hover {
         background-color: $third-color;
+    }
+
+    // NOTE: SIGNUP 
+    #signup-btn-submit:hover {
+        background-color: $primary-color;
+    }
+
+    #signupHeader {
+        background-color: $primary-color;
+    }
+
+    #signupModalLabel {
+        color: white;
+    }
+    
+    #signup-form-row label {
+        margin: 8px;
+    }
+
+    // NOTE: DO'S & DON'TS
+    #dosdonts-page {
+        border: 2px solid black;
     }
 }

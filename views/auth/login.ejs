@@ -9,6 +9,13 @@
 
             <h1>Login Page</h1>
             <div class="container justify-content-center">
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <p>
+                            <%= error %>
+                        </p>
+                    </div>
+                <% } %>
                 <form action="/login" method="POST"
                 class="needs-validation" novalidate>
                     <div class="col-md-4">

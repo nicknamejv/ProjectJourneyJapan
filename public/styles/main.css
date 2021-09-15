@@ -44,6 +44,21 @@ body #journeyjapan-title:hover {
   color: #A8DADC !important;
   text-shadow: 2px 2px 2px #A8DADC;
 }
+body #loginHeader {
+  background-color: #e63946;
+}
+body #loginModalLabel {
+  color: white;
+}
+body #login-btn-footer:hover {
+  background-color: #457B9D;
+}
+body #login-user-input {
+  width: 450px;
+}
+body #validationPassword-login {
+  width: 450px;
+}
 body #journey-japan-text {
   border: 2px solid black;
 }
@@ -360,6 +375,21 @@ body #userProfile {
 }
 body .btn-dark:hover {
   background-color: #457B9D;
+}
+body #signup-btn-submit:hover {
+  background-color: #e63946;
+}
+body #signupHeader {
+  background-color: #e63946;
+}
+body #signupModalLabel {
+  color: white;
+}
+body #signup-form-row label {
+  margin: 8px;
+}
+body #dosdonts-page {
+  border: 2px solid black;
 }
 
 /*# sourceMappingURL=main.css.map */

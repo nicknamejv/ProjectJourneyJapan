@@ -11,6 +11,7 @@ router.get('/signup', async (req, res, next) => {
 
         const context = {
             cities: allCities,
+            error: null,
         };
 
         return res.render('auth/signup', context);
@@ -24,33 +25,34 @@ router.get('/signup', async (req, res, next) => {
 
 
 // NOTE: GET Login 
-router.get('/login', async (req, res, next) => {
-    try {
-        const allCities = await City.find({});
+// router.get('/login', async (req, res, next) => {
+//     try {
+//         const allCities = await City.find({});
 
-        const context = {
-            cities: allCities,
-        };
+//         const context = {
+//             cities: allCities,
+//         };
 
-        return res.render('auth/login', context);
+//         return res.render('auth/login', context);
 
-    } catch (error) {
-        console.log(error);
-        req.error = error;
-        return next();
-    };
-});
+//     } catch (error) {
+//         console.log(error);
+//         req.error = error;
+//         return next();
+//     };
+// });
 
 
 // NOTE: POST Sign Up
 router.post('/signup', async (req, res) => {
     try {
-        const foundUser = await User.exists({
-            email: req.body.email
-        });
+        const foundUser = await User.exists( {$or: [
+            { email: req.body.email },
+            { username: req.body.username } 
+        ]});
 
         if (foundUser) {
-            return res.redirect('/login');
+            throw "Username or Email is already taken!"
         };
 
         // salt here for hash
@@ -66,7 +68,8 @@ router.post('/signup', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.send(error);
+        const context = { error };
+        return res.render('auth/signup', context);
     };
 });
 
@@ -86,8 +89,10 @@ router.post('/login', async (req, res) => {
         const match = await bcrypt.compare(req.body.password, foundUser.password);
 
         // if not match we will send error
-        // if (!match) return res.send('Your passsword is invalid!');
-        if (!match) return res.redirect('/journeyjapan');
+        if (!match) {
+            throw 'Your username or password is invalid!'
+        };
+        // if (!match) return res.redirect('/journeyjapan');
 
         // if match then create the session and redirect to home page
         req.session.currentUser = {
@@ -99,7 +104,7 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.send(error);
+        return res.render('journeyjapan/index');
     }
 });
 

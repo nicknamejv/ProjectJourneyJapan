@@ -1,5 +1,4 @@
 // NOTE: Bootstrap check validation form
-
 (function () {
     'use strict'
 
