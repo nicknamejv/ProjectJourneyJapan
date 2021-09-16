@@ -8,7 +8,7 @@ router.get('/:id', async (req, res, next) => {
     try {
         const allCities = await City.find({});
         const foundThingsToDo = await ThingsToDo.findById(req.params.id);
-        const allReview = await Review.find({ thingstodo: req.params.id }).populate('thingstodo user');
+        const allReview = await Review.find({ thingstodo: req.params.id}).sort({ createdAt: 'desc' }).populate('thingstodo user');
 
         const context = {
             cities: allCities,
