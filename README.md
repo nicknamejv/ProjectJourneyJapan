@@ -73,3 +73,7 @@ jQuery
 ```
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 ```
+
+## Feature Creeps & Unsolved Problems
+- Ability to add markers into Google Map Api when user creates recommendation.
+- Use another api with things to do in Japan that way there is no need to add these places manually.
