@@ -96,8 +96,10 @@ body {
         border: 2px solid black;
     }
 
-    .carousel img {
-        height: 78vh;
+    @media (min-width: 576px) {
+        .carousel img {
+            height: 78vh;
+        }
     }
 
     .carousel-caption {
@@ -153,7 +155,7 @@ body {
         text-decoration: underline;
         text-shadow: 3px 0 $primary-color;
     }
-
+    
     #city-image {
         height: 850px;
         width: 850px;

@@ -69,8 +69,10 @@ body #validationPassword-login {
 body #journey-japan-text {
   border: 2px solid black;
 }
-body .carousel img {
-  height: 78vh;
+@media (min-width: 576px) {
+  body .carousel img {
+    height: 78vh;
+  }
 }
 body .carousel-caption {
   background-color: black;
