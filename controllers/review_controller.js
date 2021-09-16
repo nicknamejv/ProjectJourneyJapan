@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { authRequired } = require('../utils/auth');
 const { Review, User } = require('../models');
 
 // NOTE: Create Route
-router.post('/', authRequired, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const review = {
             ...req.body,
@@ -25,7 +24,7 @@ router.post('/', authRequired, async (req, res, next) => {
 
 
 // NOTE: Edit Route (Functional)
-router.put('/:id', authRequired, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
         const updatedReview = await Review.findByIdAndUpdate(req.params.id,
             { $set: req.body },
@@ -45,7 +44,7 @@ router.put('/:id', authRequired, async (req, res, next) => {
 });
 
 // NOTE: Delete Route
-router.delete('/:id', authRequired, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     try {
         const deletedReview = await Review.findByIdAndDelete(req.params.id);
 

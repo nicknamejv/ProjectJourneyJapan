@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const { City, ThingsToDo, Review, User } = require('../models');
-const { authRequired } = require('../utils/auth');
 
 // NOTE: Show Route 
-router.get('/:id', authRequired, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     try {
         const allCities = await City.find({});
         const foundThingsToDo = await ThingsToDo.findById(req.params.id);
@@ -28,7 +27,7 @@ router.get('/:id', authRequired, async (req, res, next) => {
 });
 
 // NOTE: Create Route
-router.post('/', authRequired, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const todo = {
             ...req.body,
@@ -46,7 +45,7 @@ router.post('/', authRequired, async (req, res, next) => {
 });
 
 // NOTE: UPDATE Route
-router.put('/:id', authRequired, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
         const updatedThingsToDo = await ThingsToDo.findByIdAndUpdate(req.params.id,
             { $set: req.body },
@@ -62,7 +61,7 @@ router.put('/:id', authRequired, async (req, res, next) => {
 });
 
 // NOTE: Delete Route
-router.delete('/:id', authRequired, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     try {
         const deletedThingsToDo = await ThingsToDo.findByIdAndDelete(req.params.id);
         const deletedReviews = await Review.deleteMany({ thingstodo: req.params.id });

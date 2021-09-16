@@ -43,7 +43,7 @@ const authRequired = function (req, res, next) {
         return next();
     };
 
-    return res.redirect('/login');
+    return res.redirect('/journeyjapan');
 };
 
 
@@ -56,11 +56,11 @@ app.use(function (req, res, next) {
 
 // SECTION: Controller Files
 app.use('/journeyjapan', controllers.journeyjapan);
-app.use('/city', controllers.city);
-app.use('/dosanddonts', controllers.donsanddonts);
-app.use('/profile', controllers.profile);
-app.use('/reviews', controllers.reviews);
-app.use('/thingstodo', controllers.thingstodo);
+app.use('/city', authRequired, controllers.city);
+app.use('/dosanddonts', authRequired, controllers.donsanddonts);
+app.use('/profile', authRequired, controllers.profile);
+app.use('/reviews', authRequired, controllers.reviews);
+app.use('/thingstodo', authRequired, controllers.thingstodo);
 app.use('/', controllers.auth);
 
 
