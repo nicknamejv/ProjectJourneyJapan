@@ -1,7 +1,7 @@
 {
   "particles": {
     "number": {
-      "value": 50,
+      "value": 40,
       "density": {
         "enable": true,
         "value_area": 500
@@ -20,7 +20,7 @@
         "nb_sides": 3
       },
       "image": {
-        "src": "https://www.seekpng.com/png/full/625-6255722_datei-emojione-1f338-svg-cherry-blossom-emoji.png",
+        "src": "assets/pngwing.com.png",
         "width": 150,
         "height": 150
       }
@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 13,
+      "value": 10,
       "random": true,
       "anim": {
         "enable": false,
@@ -54,9 +54,9 @@
     },
     "move": {
       "enable": true,
-      "speed": 0.3,
+      "speed": 0.8,
       "direction": "bottom-left",
-      "random": false,
+      "random": true,
       "straight": false,
       "out_mode": "out",
       "bounce": false,

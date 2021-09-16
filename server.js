@@ -76,6 +76,15 @@ app.get('/', (req, res) => {
     res.redirect('/journeyjapan');
 });
 
+// NOTE: About Page
+app.get('/journeyjapan/about', (req, res, next) => {
+    const context = {
+        error: null,
+    };
+
+    return res.render('journeyjapan/about', context);
+});
+
 // NOTE: 404 Page
 const { City } = require('./models');
 

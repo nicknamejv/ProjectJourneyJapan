@@ -431,6 +431,17 @@ body {
         transform: scale(1.3);
     }
 
+    #footer-about-link {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+    }
+
+    #footer-about-link:hover {
+        font-size: 20px;
+        color: $primary-color;
+    }
+
     // NOTE: == PROFILE ==
     #user-reviews-link {
         text-decoration: none;
@@ -606,5 +617,24 @@ body {
 
     .modal {
         border: 2px solid black;
+    }
+
+    // NOTE: ABOUT PAGE 
+    #about-card {
+        border: 2px solid black;
+        transition: 0.3s;
+    }
+
+    #about-card:hover h5 {
+        text-shadow: 3px 0 $primary-color;
+    }
+
+    #about-text {
+        font-size: 18px;
+    }
+
+    #about-card:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 3px 2px $primary-color;
     }
 }
