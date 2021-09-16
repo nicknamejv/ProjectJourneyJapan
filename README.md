@@ -46,7 +46,18 @@ Journey Japan is a web application catered to those who are thinking of travelin
 - Check on feature creep to add with time left
 - Do a full test on features and making sure each work correctly  
 
-# Technologies Used 
+# Technologies Used
+- Express.js
+- Express-sessions
+- Bcryptjs
+- Ejs
+- Method-override
+- Mongoose
+- Sass
+- Bootstrap.css
+- jQuery
+- Particle.js
+- Google Maps Api
 
 # Scripts Used
 
