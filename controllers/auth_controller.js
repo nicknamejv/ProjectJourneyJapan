@@ -26,13 +26,20 @@ router.get('/signup', async (req, res, next) => {
 // NOTE: POST Sign Up
 router.post('/signup', async (req, res) => {
     try {
-        const foundUser = await User.exists( {$or: [
+        const foundUser = await User.exists(
+            { username: req.body.username },
+        );
+
+        const foundEmail = await User.exists(
             { email: req.body.email },
-            { username: req.body.username } 
-        ]});
+        );
 
         if (foundUser) {
-            throw "Username or Email is already taken!"
+            throw "Username is already taken. Please try again!"
+        };
+
+        if (foundEmail) {
+            throw 'Email is already taken. Please try again!'
         };
 
         // salt here for hash
@@ -63,14 +70,16 @@ router.post('/login', async (req, res) => {
         });
 
         // if not redirect to register page
-        if (!foundUser) return res.redirect('/signup');
+        if (!foundUser) {
+            throw 'Username is incorrect or not found. Please try again or signup.'
+        }
 
         // if user exists we will validate the user if password match they will be logged in
         const match = await bcrypt.compare(req.body.password, foundUser.password);
 
         // if not match we will send error
         if (!match) {
-            throw 'Your username or password is invalid!'
+            throw 'Your password is invalid!'
         };
         // if (!match) return res.redirect('/journeyjapan');
 
