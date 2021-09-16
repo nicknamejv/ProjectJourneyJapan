@@ -1,5 +1,5 @@
 # Project Journey Japan
-Journey Japan is a web application catered to those who are thinking of traveling to Japan, been to Japan, or just genuinely interested about what Japan has to offer. Users will have the ability to create reviews on restaurants and attractions that they have been showcasing real experiences to give insight for other users about that restaurant or attraction. 
+Journey Japan is a web application that will captivate those who are traveling, planning, or thinking of going to Japan. Japan is easily one of the world's most visited country and there seems to be a stigma around the cost of actually going to Japan. The goal for Journey Japan is cultivate real user reviews on the top attractions and places to eat for each of the top cities in Japan. Think of it as a mixture of Tripadvisor and Yelp where users will be able to create an account and post their real reviews. There is also a section that will provide meaningful do's and don'ts for travelers so they can save money where they can and just make their overall experience in Japan one they will never forget!
 
 # User Story
 - On the "Journey Japan" landing page users will be provided a short introduction of what the web application will provide.
@@ -60,5 +60,16 @@ Journey Japan is a web application catered to those who are thinking of travelin
 - Google Maps Api
 
 # Scripts Used
+Bootstrap
+```
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-## Resources Used
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+```
+
+jQuery
+```
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+```
