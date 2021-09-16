@@ -34,11 +34,9 @@ body {
         display: none;
     }
 
-    
-
     // NOTE: == NAV == 
     nav {
-        font-size: 20px;
+        font-size: 23px;
         z-index: 999999;
     }
 
@@ -153,6 +151,7 @@ body {
     #city-title {
         font-size: 80px;
         text-decoration: underline;
+        text-shadow: 3px 0 $primary-color;
     }
 
     #city-image {
@@ -200,8 +199,7 @@ body {
     }
 
     #city-todos {
-        // gap: 200px;
-        gap: 60px;
+        gap: 280px;
     }
 
     #todo-food {
@@ -209,9 +207,17 @@ body {
         justify-content: center;
     }
 
+    #todo-food-title {
+        text-shadow: 3px 0 $primary-color;
+    }
+
     #todo-attraction {
         display: flex;
         justify-content: center;
+    }
+
+    #todo-attraction-title {
+        text-shadow: 3px 0 $primary-color;
     }
 
     #todo-image-show {
@@ -235,7 +241,7 @@ body {
     }
 
     #todo-card:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         box-shadow: 5px 5px 3px 3px $primary-color;
     }
 
@@ -363,6 +369,7 @@ body {
     #todo-show-title {
         font-size: 50px;
         text-decoration: underline;
+        text-shadow: 3px 0 $primary-color;
     }
 
     // NOTE: == City Todo Modal ==
@@ -521,14 +528,9 @@ body {
 
     #userProfileModal-header {
         background-color: $primary-color;
-        border-bottom: 2px solid black;
         color: white;
     }
-
-    #userProfile {
-        border: 2px solid black;
-    }
-
+    
     .btn-dark:hover {
         background-color: $third-color;
     }
@@ -564,7 +566,35 @@ body {
 
     // NOTE: GOOGLE MAPS
     #map {
-        height: 400px; 
+        height: 850px; 
         width: 100%;
+    }
+
+    #google-map-svg {
+        fill: $primary-color;
+        transition: 0.3s;
+    }
+
+    #google-map-svg:hover {
+        transform: scale(1.2);
+        fill: $secondary-color;
+    }
+
+    #google-btn {
+        outline: 0;
+        box-shadow: none;
+    }
+
+    #googleModalLabel {
+        font-size: 40px;
+        color: white;
+    }
+
+    #google-header {
+        background-color: $secondary-color;
+    }
+
+    .modal {
+        border: 2px solid black;
     }
 }

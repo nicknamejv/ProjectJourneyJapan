@@ -23,7 +23,7 @@ body #btn-back-to-top {
   display: none;
 }
 body nav {
-  font-size: 20px;
+  font-size: 23px;
   z-index: 999999;
 }
 body .navbar {
@@ -115,6 +115,7 @@ body #city-card {
 body #city-title {
   font-size: 80px;
   text-decoration: underline;
+  text-shadow: 3px 0 #e63946;
 }
 body #city-image {
   height: 850px;
@@ -151,15 +152,21 @@ body #todo-review-user-img {
   border: 1px solid black;
 }
 body #city-todos {
-  gap: 60px;
+  gap: 280px;
 }
 body #todo-food {
   display: flex;
   justify-content: center;
 }
+body #todo-food-title {
+  text-shadow: 3px 0 #e63946;
+}
 body #todo-attraction {
   display: flex;
   justify-content: center;
+}
+body #todo-attraction-title {
+  text-shadow: 3px 0 #e63946;
 }
 body #todo-image-show {
   height: 500px;
@@ -179,7 +186,7 @@ body #todo-card {
   overflow: scroll;
 }
 body #todo-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 5px 5px 3px 3px #e63946;
 }
 body #review-edit-delete {
@@ -282,6 +289,7 @@ body #todo-user-review-link:hover {
 body #todo-show-title {
   font-size: 50px;
   text-decoration: underline;
+  text-shadow: 3px 0 #e63946;
 }
 body #city-todo-modal-footer {
   display: flex;
@@ -408,11 +416,7 @@ body #user-card:hover span {
 }
 body #userProfileModal-header {
   background-color: #e63946;
-  border-bottom: 2px solid black;
   color: white;
-}
-body #userProfile {
-  border: 2px solid black;
 }
 body .btn-dark:hover {
   background-color: #457B9D;
@@ -439,8 +443,30 @@ body #dosdonts-page {
   line-height: 1.3;
 }
 body #map {
-  height: 400px;
+  height: 850px;
   width: 100%;
+}
+body #google-map-svg {
+  fill: #e63946;
+  transition: 0.3s;
+}
+body #google-map-svg:hover {
+  transform: scale(1.2);
+  fill: #A8DADC;
+}
+body #google-btn {
+  outline: 0;
+  box-shadow: none;
+}
+body #googleModalLabel {
+  font-size: 40px;
+  color: white;
+}
+body #google-header {
+  background-color: #A8DADC;
+}
+body .modal {
+  border: 2px solid black;
 }
 
 /*# sourceMappingURL=main.css.map */

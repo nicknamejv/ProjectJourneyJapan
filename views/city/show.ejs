@@ -1,18 +1,36 @@
 <html lang="en">
 <!-- Head Partial -->
 <%- include('../partials/head/head.ejs', { page: city.city }) %>
+
     <body>
         <!-- Navbar Partial -->
         <%- include ('../partials/navbar/navbar.ejs') %>
-            <div class="modal-show">
-                <div id="map"></div>
+        <!-- Modal -->
+            <div class="modal fade" id="googleModal" tabindex="-1" aria-labelledby="googleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" id="google-header">
+                    <h5 class="modal-title" id="googleModalLabel">Google Maps</h5>
+                    <button type="button" class="btn-close h5 btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="map"></div>
+                        <script src="/scripts/googlemaps.js"></script>
+                    </div>
+                </div>
+                </div>
             </div>
-            <script src="/scripts/googlemaps.js"></script>
-        <main id="city-main">
+            <main id="city-main">
                 <div class="container d-flex justify-content-center my-2">
                     <h1 id="city-title">
                         <%= city.city %>
                     </h1>
+                    <!-- Google Map trigger modal -->
+                    <button id="google-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#googleModal">
+                        <svg id="google-map-svg"xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="container-fluid my-2 p-2" id="city-show">
                     <img src="<%= city.image %>" alt="<%= city.city %>" class="img-thumbnail border-5 border-dark"
@@ -186,7 +204,7 @@
                         <br>
                         <div class="card p-3 m-3" id="todo-card">
                             <!-- If User is logged in -->
-                            <% if (user.username === 'admin' ) { %>
+                            <% if (user.username==='admin' ) { %>
                                 <div class="d-flex align-items-center justify-content-end" id="review-edit-delete">
                                     <!-- Edit trigger modal -->
                                     <button id="todo-btn-edit" type="button" class="toggle-modal p-1 btn btn-secondary"
@@ -245,12 +263,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="container">
-                                            <form action="/thingstodo/<%= foundThingsToDoAttraction._id %>?_method=PUT" method="POST">
+                                            <form action="/thingstodo/<%= foundThingsToDoAttraction._id %>?_method=PUT"
+                                                method="POST">
                                                 <div class="mb-3">
                                                     <label>Title</label>
                                                     <input type="text" name="title" class="form-control"
                                                         placeholder="What is it called?"
-                                                        value="<%= foundThingsToDoAttraction.title %> " autofocus required />
+                                                        value="<%= foundThingsToDoAttraction.title %> " autofocus
+                                                        required />
                                                 </div>
                                                 <div class="form mb-3">
                                                     <label>Description:</label>
@@ -261,8 +281,8 @@
                                                 <div class="mb-3">
                                                     <label>Add a Image:</label>
                                                     <input type="text" class="form-control" placeholder="https://"
-                                                        name="image" value="<%= foundThingsToDoAttraction.image %>" required
-                                                        autofocus />
+                                                        name="image" value="<%= foundThingsToDoAttraction.image %>"
+                                                        required autofocus />
                                                 </div>
 
                                                 <!-- Category hidden input -->
@@ -374,4 +394,5 @@
                 TOP OF PAGE
             </button>
     </body>
+
 </html>
