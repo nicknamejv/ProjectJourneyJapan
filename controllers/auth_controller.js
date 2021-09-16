@@ -84,7 +84,8 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.render('journeyjapan/index');
+        const context = { error };
+        return res.render('journeyjapan/index', context);
     }
 });
 

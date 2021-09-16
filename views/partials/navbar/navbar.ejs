@@ -30,7 +30,7 @@
                                         <%= allCities.city %>
                                     </a>
                                 </li>
-                                <% }) %>
+                            <% }) %>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -62,7 +62,7 @@
 
             <!-- Login modal -->
                 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
-                    aria-hidden="true">
+                    aria-hidden="true" data-auto-open>
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header" id="loginHeader">
@@ -74,6 +74,13 @@
                             </div>
                             <div class="modal-body">
                                 <div class="container">
+                                    <div class="d-flex justify-content-center">
+                                        <% if (error) { %>
+                                            <p class="alert alert-danger" role="alert" id="login-error">
+                                                <%= error %>
+                                            </p>
+                                            <% } %>
+                                    </div>
                                     <form action="/login" method="POST" class="has-validation" novalidate>
                                         <div class="mb-1">
                                             <label for="validationCustomUsername" class="form-label">Username</label>

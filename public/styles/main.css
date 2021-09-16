@@ -63,6 +63,9 @@ body #login-btn-footer:hover {
 body #login-user-input {
   width: 450px;
 }
+body #login-error {
+  font-size: 18px;
+}
 body #validationPassword-login {
   width: 450px;
 }
@@ -438,6 +441,9 @@ body #signup-form-row label {
 body #signup-modal-content {
   border: 2px solid black;
   border-radius: 8px;
+}
+body #signup-error {
+  font-size: 20px;
 }
 body #dosdonts-page {
   border: 3px solid black;

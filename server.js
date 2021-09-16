@@ -38,12 +38,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // NOTE: Auth Middleware
-const authRequired = function (req, res, next) {
-    if (req.session.currentUser) {
-        return next();
-    };
+const authRequired = async (req, res, next) => {
+    try {
+        if (req.session.currentUser) {
+            return next();
+        } else {
+            throw "Please log in or sign up!"
+        }
 
-    return res.redirect('/journeyjapan');
+    } catch (error) {
+        console.log(error);
+        const context = { error };
+        return res.render('journeyjapan/404', context);
+    };
 };
 
 
