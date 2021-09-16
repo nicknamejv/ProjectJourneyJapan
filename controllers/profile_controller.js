@@ -14,6 +14,7 @@ router.get('/:id', async (req, res, next) => {
             profile: foundUser,
             cities: allCities,
             review: allUserReviews,
+            error: null,
         };
 
         return res.render('profile/show', context);

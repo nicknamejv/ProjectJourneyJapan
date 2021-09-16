@@ -87,6 +87,10 @@ body {
         width: 450px;
     }
 
+    #login-error {
+        font-size: 18px;
+    }
+
     #validationPassword-login {
         width: 450px;
     }
@@ -557,6 +561,10 @@ body {
     #signup-modal-content {
         border: 2px solid black;
         border-radius: 8px;
+    }
+
+    #signup-error {
+        font-size: 20px;
     }
 
     // NOTE: DO'S & DON'TS

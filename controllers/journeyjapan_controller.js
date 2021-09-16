@@ -10,14 +10,15 @@ router.get('/', async (req, res, next) => {
 
         const context = {
             cities: allCities,
+            error: null,
         };
 
         return res.render('journeyjapan/index', context);
 
     } catch (error) {
         console.log(error);
-        req.error = error;
-        return next();
+        const context = { error };
+        return res.render('journeyjapan/index', context);
     };
 });
 

@@ -6,6 +6,19 @@
 <body>
     <!-- Navbar Partial -->
     <%- include ('../partials/navbar/navbar.ejs') %>
+
+    <!-- If login fails open modal with error & autofocus on first input -->
+    <script>
+        $(function () {
+            if (window.location.pathname == "/login") {
+                $('#loginModal').modal('show');
+            };
+        });
+        
+        $('.modal').on('shown.bs.modal', function() {
+            $(this).find('[autofocus]').focus();
+        });
+    </script>
     <main>
         <div id="particles-js"></div>
         <div id="carouselCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">

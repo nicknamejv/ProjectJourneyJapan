@@ -10,6 +10,7 @@ router.get('/', async (req, res, next) => {
 
         const context = {
             cities: allCities,
+            error: null,
         };
 
         return res.render('dosanddonts/index', context);

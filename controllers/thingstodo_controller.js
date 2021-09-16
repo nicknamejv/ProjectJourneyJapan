@@ -14,6 +14,7 @@ router.get('/:id', async (req, res, next) => {
             cities: allCities,
             thingstodo: foundThingsToDo,
             reviews: allReview,
+            error: null,
         };
 
 

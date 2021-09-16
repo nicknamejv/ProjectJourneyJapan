@@ -22,6 +22,7 @@ router.get('/:id', async (req, res, next) => {
         cities: allCities,
         thingstodofood: foundThingsToDoFood,
         thingstodoattraction: foundThingsToDoAttractions,
+        error: null,
     };
     
     return res.render("city/show", context);

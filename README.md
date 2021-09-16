@@ -9,6 +9,11 @@ Journey Japan is a web application that will captivate those who are traveling, 
 - Users can leave reviews for that restaurant/attraction.
 - Users can login/signup for a account and upon doing so they will be able to create, edit, and delete their own reviews.
 
+## Install Instructions
+```
+Run npm i for all dependencies 
+```
+
 # Wireframes
 ![Landing Page](https://user-images.githubusercontent.com/85213417/132397340-0a684ed9-2f86-4292-bc9d-df3eb97c9f8c.png)
 
