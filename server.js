@@ -89,7 +89,6 @@ app.get('/journeyjapan/about', async (req, res, next) => {
     return res.render('journeyjapan/about', context);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     }
@@ -109,7 +108,6 @@ app.get("/*", async (req, res, next) => {
         
         res.render("journeyjapan/404", context);
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };

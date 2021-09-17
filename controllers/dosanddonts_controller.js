@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
         return res.render('dosanddonts/index', context);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };

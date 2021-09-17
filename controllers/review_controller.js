@@ -37,7 +37,6 @@ router.put('/:id', async (req, res, next) => {
         return res.redirect(`/thingstodo/${updatedReview.thingstodo}`)
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
@@ -51,7 +50,6 @@ router.delete('/:id', async (req, res, next) => {
         return res.redirect(`/thingstodo/${deletedReview.thingstodo}`);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
