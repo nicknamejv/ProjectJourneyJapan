@@ -28,7 +28,6 @@ router.get('/:id', async (req, res, next) => {
     return res.render("city/show", context);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     }

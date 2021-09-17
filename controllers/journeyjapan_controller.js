@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
         return res.render('journeyjapan/index', context);
 
     } catch (error) {
-        console.log(error);
         const context = { error };
         return res.render('journeyjapan/index', context);
     };

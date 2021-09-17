@@ -21,7 +21,6 @@ router.get('/:id', async (req, res, next) => {
         return res.render('thingstodo/show', context);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
@@ -39,7 +38,6 @@ router.post('/', async (req, res, next) => {
         return res.redirect(`/${req.query.redirect}`);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
@@ -55,7 +53,6 @@ router.put('/:id', async (req, res, next) => {
         return res.redirect(`/city/${updatedThingsToDo.city}`);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
@@ -70,7 +67,6 @@ router.delete('/:id', async (req, res, next) => {
         return res.redirect(`/city/${deletedThingsToDo.city}`);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };

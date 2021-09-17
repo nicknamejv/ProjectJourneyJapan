@@ -20,7 +20,6 @@ router.get('/:id', async (req, res, next) => {
         return res.render('profile/show', context);
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     };
@@ -40,7 +39,6 @@ router.put('/:id', async (req, res, next) => {
         return res.redirect(`/profile/${updatedUser.id}`)
 
     } catch (error) {
-        console.log(error);
         req.error = error;
         return next();
     }

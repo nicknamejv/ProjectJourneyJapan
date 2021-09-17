@@ -54,7 +54,6 @@ router.post('/signup', async (req, res) => {
         return res.redirect('/journeyjapan');
 
     } catch (error) {
-        console.log(error);
         const context = { error };
         return res.render('auth/signup', context);
     };
@@ -92,7 +91,6 @@ router.post('/login', async (req, res) => {
         return res.redirect('/journeyjapan');
 
     } catch (error) {
-        console.log(error);
         const context = { error };
         return res.render('journeyjapan/index', context);
     }
@@ -106,7 +104,6 @@ router.get('/logout', async (req, res) => {
         return res.redirect('/journeyjapan');
 
     } catch (error) {
-        console.log(error);
         return res.send(error);
     }
 });
