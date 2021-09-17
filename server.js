@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 require('dotenv').config();
 
 // SECTION: AUTH
@@ -106,6 +106,6 @@ app.get("/*", async (req, res, next) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`I live on port ${PORT}`);
 });
