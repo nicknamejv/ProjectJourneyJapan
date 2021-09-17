@@ -12,8 +12,9 @@
     <div class="container-fluid my-2 p-2">
         <div class="row">
             <div class="col-5" id="user-col">
-                <button type="button" data-bs-toggle="modal" id="profile-button"
-                data-bs-target="#userProfileModal">
+                <% if (user.username === profile.username) { %>
+                    <button type="button" data-bs-toggle="modal" id="profile-button"
+                    data-bs-target="#userProfileModal">
                     <div class="card p-3" style="width: 35rem" id="user-card">
                         <span id="profile-edit-text">
                             Edit Profile
@@ -34,6 +35,24 @@
                         </div>
                     </div>
                 </button>
+                <% } else { %>
+                    <div class="card p-3" style="width: 35rem" id="user-card">
+                        <h5 class="user-card-title">
+                            Hello @<%= profile.username %>!
+                        </h5>
+                        <img
+                        class="card-img-top img-thumbnail border-2 border-dark"
+                        src="<%= profile.avatar %>" 
+                        alt="user-avatar" 
+                        width="350" 
+                        height="525">
+                        <div class="card-body">
+                            <p class="card-text" id="user-card-text">
+                                " <%= profile.bio %> "
+                            </p>
+                        </div>
+                    </div>
+                <% } %>
             </div>
             <div class="col">
                 <div id="user-reviews-all">
