@@ -77,12 +77,22 @@ app.get('/', (req, res) => {
 });
 
 // NOTE: About Page
-app.get('/journeyjapan/about', (req, res, next) => {
-    const context = {
-        error: null,
+app.get('/journeyjapan/about', async (req, res, next) => {
+    try {
+        const allCities = await City.find({});
+        
+        const context = {
+            cities: allCities,
+            error: null,
     };
-
+    
     return res.render('journeyjapan/about', context);
+
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    }
 });
 
 // NOTE: 404 Page
