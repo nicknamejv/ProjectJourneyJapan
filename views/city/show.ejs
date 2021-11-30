@@ -184,7 +184,7 @@
                                         </button>
                                         <form action="/thingstodo/<%= foundThingsToDoFood._id %>?_method=DELETE"
                                             method="POST">
-                                            <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                            <button class="btn btn-secondary" id="todo-delete-confirm <%= foundThingsToDoFood._id %>  %> ">Confirm?</button>
                                         </form>
                                     </div>
                                 </div>
@@ -322,7 +322,7 @@
                                         </button>
                                         <form action="/thingstodo/<%= foundThingsToDoAttraction._id %>?_method=DELETE"
                                             method="POST">
-                                            <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                            <button class="btn btn-secondary" id="todo-delete-confirm  <%= foundThingsToDoAttraction._id %>">Confirm?</button>
                                         </form>
                                     </div>
                                 </div>
