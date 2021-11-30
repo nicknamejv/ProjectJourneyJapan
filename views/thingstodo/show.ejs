@@ -182,7 +182,7 @@
                                     Cancel
                                 </button>
                                 <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                                    <button class="btn btn-secondary" id="todo-delete-confirm">Confirm?</button>
+                                    <button class="btn btn-secondary" id="todo-delete-confirm <%= review._id %>">Confirm?</button>
                                 </form>
                             </div>
                         </div>
